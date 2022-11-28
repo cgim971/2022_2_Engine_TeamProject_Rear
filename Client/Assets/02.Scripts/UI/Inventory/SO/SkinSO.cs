@@ -6,6 +6,6 @@ using UnityEngine;
 public class SkinSO : ScriptableObject
 {
     public int _index;
-    public Mesh _model;
+    public GameObject _model;
     public Sprite _sprite;
 }

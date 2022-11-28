@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cube_4
   m_EditorClassIdentifier: 
   _index: 4
-  _model: {fileID: 0}
+  _model: {fileID: 2965305075213604192, guid: 5c06996d81aa0a04895f3a189d36fc07, type: 3}
   _sprite: {fileID: 0}

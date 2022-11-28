@@ -11,59 +11,151 @@ public enum UIPanelType
     NONE,
     INVENTORY,
     SETTING,
+    CLOSE,
 }
 
 public class StartUIManager : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _inventoryCanvasGroup;
     [SerializeField] private CanvasGroup _settingCanvasGroup;
+    [SerializeField] private CanvasGroup _closeCanvasGroup;
 
     public UnityEvent _inventoryInit;
     public UnityEvent _settingInit;
+    public UnityEvent _closeInit;
+
+    private CanvasGroup _fadeImage;
+    [SerializeField] private float _delay = 0.5f;
+
 
     private void Awake() => Init();
 
-    void Init() { }
+    void Init()
+    {
+        _fadeImage = GameManager.Instance.uiManager.FadeImage;
+    }
 
     public void Exit()
     {
-        Debug.Log("나감");
+        Sequence seq = DOTween.Sequence();
+        seq.OnRewind(() =>
+        {
+            _fadeImage.alpha = 0;
+            _fadeImage.interactable = true;
+            _fadeImage.blocksRaycasts = true;
+        });
+        seq.Append(_fadeImage.DOFade(1f, _delay));
+        seq.AppendCallback(() =>
+        {
+            _closeInit?.Invoke();
+            _closeCanvasGroup.alpha = 1;
+            _closeCanvasGroup.interactable = true;
+            _closeCanvasGroup.blocksRaycasts = true;
+        });
+        seq.Append(_fadeImage.DOFade(0.0f, _delay));
+        seq.OnComplete(() =>
+        {
+            _fadeImage.alpha = 0;
+            _fadeImage.interactable = false;
+            _fadeImage.blocksRaycasts = false;
+        });
+        seq.Play();
     }
 
     public void ToMainPanel(string type)
     {
-        Debug.Log("메인화면으로");
-
-        if (type == UIPanelType.INVENTORY.ToString())
+        Sequence seq = DOTween.Sequence();
+        seq.OnRewind(() =>
         {
-            Debug.Log("Inventory 종료");
-            _inventoryCanvasGroup.alpha = 0;
-            _inventoryCanvasGroup.interactable = false;
-            _inventoryCanvasGroup.blocksRaycasts = false;
-        }
-        else if (type == UIPanelType.SETTING.ToString())
+            _fadeImage.alpha = 0;
+            _fadeImage.interactable = true;
+            _fadeImage.blocksRaycasts = true;
+        });
+        seq.Append(_fadeImage.DOFade(1f, _delay));
+        seq.AppendCallback(() =>
         {
-            Debug.Log("Setting 종료");
-            _settingCanvasGroup.alpha = 0;
-            _settingCanvasGroup.interactable = false;
-            _settingCanvasGroup.blocksRaycasts = false;
-        }
+            if (type == UIPanelType.INVENTORY.ToString())
+            {
+                Debug.Log("Inventory 종료");
+                _inventoryCanvasGroup.alpha = 0;
+                _inventoryCanvasGroup.interactable = false;
+                _inventoryCanvasGroup.blocksRaycasts = false;
+            }
+            else if (type == UIPanelType.SETTING.ToString())
+            {
+                Debug.Log("Setting 종료");
+                _settingCanvasGroup.alpha = 0;
+                _settingCanvasGroup.interactable = false;
+                _settingCanvasGroup.blocksRaycasts = false;
+            }
+            else if (type == UIPanelType.CLOSE.ToString())
+            {
+                _closeCanvasGroup.alpha = 0;
+                _closeCanvasGroup.interactable = false;
+                _closeCanvasGroup.blocksRaycasts= false;
+            }
+        });
+        seq.Append(_fadeImage.DOFade(0.0f, _delay));
+        seq.OnComplete(() =>
+        {
+            _fadeImage.alpha = 0;
+            _fadeImage.interactable = false;
+            _fadeImage.blocksRaycasts = false;
+        });
+        seq.Play();
     }
 
     public void ToInventoryPanel()
     {
-        _inventoryInit?.Invoke();
-        _inventoryCanvasGroup.alpha = 1;
-        _inventoryCanvasGroup.interactable = true;
-        _inventoryCanvasGroup.blocksRaycasts = true;
+        Sequence seq = DOTween.Sequence();
+        seq.OnRewind(() =>
+        {
+            _fadeImage.alpha = 0;
+            _fadeImage.interactable = true;
+            _fadeImage.blocksRaycasts = true;
+        });
+        seq.Append(_fadeImage.DOFade(1f, _delay));
+        seq.AppendCallback(() =>
+        {
+            _inventoryInit?.Invoke();
+            _inventoryCanvasGroup.alpha = 1;
+            _inventoryCanvasGroup.interactable = true;
+            _inventoryCanvasGroup.blocksRaycasts = true;
+        });
+        seq.Append(_fadeImage.DOFade(0.0f, _delay));
+        seq.OnComplete(() =>
+        {
+            _fadeImage.alpha = 0;
+            _fadeImage.interactable = false;
+            _fadeImage.blocksRaycasts = false;
+        });
+        seq.Play();
     }
 
     public void ToSettingPanel()
     {
-        _settingInit?.Invoke();
-        _settingCanvasGroup.alpha = 1;
-        _settingCanvasGroup.interactable = true;
-        _settingCanvasGroup.blocksRaycasts = true;
+        Sequence seq = DOTween.Sequence();
+        seq.OnRewind(() =>
+        {
+            _fadeImage.alpha = 0;
+            _fadeImage.interactable = true;
+            _fadeImage.blocksRaycasts = true;
+        });
+        seq.Append(_fadeImage.DOFade(1f, _delay));
+        seq.AppendCallback(() =>
+        {
+            _settingInit?.Invoke();
+            _settingCanvasGroup.alpha = 1;
+            _settingCanvasGroup.interactable = true;
+            _settingCanvasGroup.blocksRaycasts = true;
+        });
+        seq.Append(_fadeImage.DOFade(0.0f, _delay));
+        seq.OnComplete(() =>
+        {
+            _fadeImage.alpha = 0;
+            _fadeImage.interactable = false;
+            _fadeImage.blocksRaycasts = false;
+        });
+        seq.Play();
     }
-
 }

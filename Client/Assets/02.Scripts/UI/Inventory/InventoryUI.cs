@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
+    private static InventoryUI _instance;
+    public static InventoryUI Instance => _instance;
+
     public enum SkinType
     {
         NONE,
@@ -15,6 +18,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private ScrollRect _verticalView;
     [SerializeField] private ScrollRect _horizontalView;
     [SerializeField] private Transform _content;
+    [SerializeField] private PreviewModel _previewModel;
+    public PreviewModel PreviewModel => _previewModel;
 
     [SerializeField] private SkinListSO _skinList;
 
@@ -22,6 +27,8 @@ public class InventoryUI : MonoBehaviour
 
     public void Init()
     {
+        _instance = this;
+
         foreach (GameObject skin in _horizontalViewDictionary.Values)
         {
             Destroy(skin);

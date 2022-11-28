@@ -6,7 +6,14 @@ using UnityEngine.UI;
 
 public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    Button _btn;
+    private Button _btn;
+    private Image _image;
+    private PreviewModel _previewModel;
+    public PreviewModel PreviewModel
+    {
+        get => _previewModel;
+        set => _previewModel = value;
+    }
 
     private SkinSO _skin;
     public SkinSO Skin
@@ -51,7 +58,7 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
         _btn.onClick.AddListener(() =>
         {
-            Debug.Log(_skin._index);
+            InventoryUI.Instance.PreviewModel.SetModel(_skin._model);
         });
     }
 }
