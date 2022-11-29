@@ -6,6 +6,7 @@ using UnityEngine;
 public class SkinSO : ScriptableObject
 {
     public int _index;
+    public bool _lock;
     public GameObject _model;
     public Sprite _sprite;
 }

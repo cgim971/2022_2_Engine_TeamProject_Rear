@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum SkinType
+{
+    NONE,
+    CUBE,
+    UFO,
+}
+
 public class InventoryUI : MonoBehaviour
 {
     private static InventoryUI _instance;
     public static InventoryUI Instance => _instance;
-
-    public enum SkinType
-    {
-        NONE,
-        CUBE,
-        UFO,
-    }
 
     [SerializeField] private ScrollRect _verticalView;
     [SerializeField] private ScrollRect _horizontalView;
@@ -22,7 +22,7 @@ public class InventoryUI : MonoBehaviour
     public PreviewModel PreviewModel => _previewModel;
 
     [SerializeField] private SkinListSO _skinList;
-
+    [SerializeField] private SkinSO _initialSkin;
     Dictionary<SkinType, GameObject> _horizontalViewDictionary = new Dictionary<SkinType, GameObject>();
 
     public void Init()
@@ -36,6 +36,18 @@ public class InventoryUI : MonoBehaviour
         _horizontalViewDictionary.Clear();
 
         CreateSkin();
+
+        SkinSO _skin = null;
+        if (_skinList._lastSkin != null)
+        {
+            _skin = _skinList._lastSkin;
+        }
+        else
+        {
+            _skin = _initialSkin;
+        }
+
+        _previewModel.SetModel(_skin._model);
     }
 
     void CreateSkin()
@@ -47,10 +59,25 @@ public class InventoryUI : MonoBehaviour
     void CreateHorizontalView(SkinType skinType, List<SkinSO> skinList)
     {
         GameObject newHorizontalView = Instantiate(_horizontalView.gameObject, _content.transform);
+        newHorizontalView.GetComponent<HorizontalViewUI>().SkinType = skinType;
         newHorizontalView.GetComponent<HorizontalViewUI>().SkinList = skinList;
         newHorizontalView.GetComponent<HorizontalViewUI>().VerticalView = _verticalView;
         newHorizontalView.GetComponent<HorizontalViewUI>().Init();
 
         _horizontalViewDictionary.Add(skinType, newHorizontalView);
+    }
+
+    public void SetCurrentSkin(SkinType skinType, SkinSO skinSO)
+    {
+        if (skinType == SkinType.CUBE)
+        {
+            _skinList._currentCube = skinSO;
+        }
+        else if (skinType == SkinType.UFO)
+        {
+            _skinList._currentUfo = skinSO;
+        }
+
+        _skinList._lastSkin = skinSO;
     }
 }

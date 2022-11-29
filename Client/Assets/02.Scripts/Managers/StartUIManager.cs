@@ -27,7 +27,6 @@ public class StartUIManager : MonoBehaviour
     private CanvasGroup _fadeImage;
     [SerializeField] private float _delay = 0.5f;
 
-
     private void Awake() => Init();
 
     void Init()

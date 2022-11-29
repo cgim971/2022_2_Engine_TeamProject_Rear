@@ -7,12 +7,22 @@ using UnityEngine.UI;
 public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Button _btn;
-    private Image _image;
+    [SerializeField] private Image _image;
+    [SerializeField] private Sprite _lockSprite;
+
+
     private PreviewModel _previewModel;
     public PreviewModel PreviewModel
     {
         get => _previewModel;
         set => _previewModel = value;
+    }
+
+    private SkinType _skinType;
+    public SkinType SkinType
+    {
+        get => _skinType;
+        set => _skinType = value;
     }
 
     private SkinSO _skin;
@@ -56,9 +66,21 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         _btn = GetComponent<Button>();
 
+        if (_skin._lock == true)
+        {
+            _image.sprite = _lockSprite;
+        }
+        else
+        {
+            _image.sprite = _skin._sprite;
+        }
+
         _btn.onClick.AddListener(() =>
         {
+            if (_skin._lock == true) return;
+
             InventoryUI.Instance.PreviewModel.SetModel(_skin._model);
+            InventoryUI.Instance.SetCurrentSkin(_skinType, _skin);
         });
     }
 }

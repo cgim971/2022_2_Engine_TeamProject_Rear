@@ -8,6 +8,13 @@ public class HorizontalViewUI : MonoBehaviour
     [SerializeField] private GameObject _slot;
     [SerializeField] private Transform _content;
 
+    private SkinType _skinType;
+    public SkinType SkinType
+    {
+        get => _skinType;
+        set => _skinType = value;
+    }
+
     private List<SkinSO> _skinList;
     public List<SkinSO> SkinList
     {
@@ -30,6 +37,7 @@ public class HorizontalViewUI : MonoBehaviour
     void CreateSlot(SkinSO skin)
     {
         GameObject newSlot = Instantiate(_slot, _content);
+        newSlot.GetComponent<SlotUI>().SkinType = _skinType;
         newSlot.GetComponent<SlotUI>().Skin = skin;
         newSlot.GetComponent<SlotUI>().HorizontalView = this.GetComponent<ScrollRect>();
         newSlot.GetComponent<SlotUI>().VerticalView = _verticalView;
