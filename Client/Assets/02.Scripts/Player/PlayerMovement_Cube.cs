@@ -17,23 +17,21 @@ public class PlayerMovement_Cube : PlayerMovement_Base
         while (true)
         {
             yield return new WaitUntil(() => Input.GetMouseButton(0));
-            Jump();
+            CanJump();
             yield return new WaitUntil(() => Input.GetMouseButtonUp(0) || CheckGround());
+            yield return new WaitForFixedUpdate();
         }
     }
 
-    private void Jump()
+    private void CanJump()
     {
-        if (CanJump())
+        if (CheckGround())
         {
+            Event_Jump?.Invoke();
             Jumping();
         }
     }
-    private bool CanJump()
-    {
-        if (CheckGround() /*|| 추가 점프*/) return true;
-        return false;
-    }
+
     private bool CheckGround()
     {
         Ray ray = new Ray(transform.position, _customGravity.GravityValue);
@@ -41,7 +39,13 @@ public class PlayerMovement_Cube : PlayerMovement_Base
         {
             return true;
         }
+        else if (_extraJump > 0)
+        {
+            _extraJump = 0;
+            return true;
+        }
 
         return false;
     }
+
 }

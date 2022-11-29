@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class PlayerMovement_Base : MonoBehaviour
 {
@@ -16,6 +17,14 @@ public abstract class PlayerMovement_Base : MonoBehaviour
     [SerializeField] protected float _jumpPower;
 
     [SerializeField] protected LayerMask _groundLayerMask;
+
+    public UnityEvent Event_Jump;
+    [SerializeField] protected int _extraJump = 0;
+    public int ExtraJump
+    {
+        get => _extraJump;
+        set => _extraJump = value;
+    }
 
     private void Start() => Init();
 
@@ -33,6 +42,5 @@ public abstract class PlayerMovement_Base : MonoBehaviour
 
     public abstract void Move();
     public abstract void Jumping();
-
     public abstract IEnumerator OnClick();
 }
