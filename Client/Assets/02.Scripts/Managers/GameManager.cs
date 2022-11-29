@@ -6,6 +6,9 @@ public class GameManager : MonoSingleton<GameManager>
 {
     public UIManager uiManager { get; private set; }
     public SceneManager sceneManager { get; private set; }
+    public FrameManager frameManager { get; private set; }
+    [SerializeField] private float _frame = 30f;
+
 
     private void Awake() => Init();
 
@@ -13,6 +16,9 @@ public class GameManager : MonoSingleton<GameManager>
     {
         uiManager = this.GetComponent<UIManager>();
         sceneManager = this.GetComponent<SceneManager>();
+        frameManager = this.GetComponent<FrameManager>();
+
+        frameManager.SetFrame(_frame);
     }
 
     private void Update()
