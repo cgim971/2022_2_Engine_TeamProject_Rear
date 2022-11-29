@@ -13,7 +13,7 @@ public class PreviewModel : MonoBehaviour
     {
         _rotationSequence = DOTween.Sequence().SetAutoKill(false);
         _rotationSequence.AppendInterval(0.1f);
-        _rotationSequence.Append(transform.DORotate(new Vector3(360f, 360f, 360f), 4.5f, RotateMode.FastBeyond360).SetEase(Ease.InOutCubic)).SetLoops(-1,LoopType.Yoyo);
+        _rotationSequence.Append(transform.DORotate(new Vector3(360f, 360f, 0f), 7.5f, RotateMode.FastBeyond360).SetEase(Ease.InOutCubic)).SetLoops(-1,LoopType.Yoyo);
         _rotationSequence.Pause();
     }
     private void Start()

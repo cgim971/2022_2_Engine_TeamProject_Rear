@@ -2,29 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement_Base : MonoBehaviour
+public abstract class PlayerMovement_Base : MonoBehaviour
 {
+    protected PlayerController _playerController;
+    protected CustomGravity _customGravity;
+    protected SpeedManager _speedManager;
+    protected Rigidbody _rigidbody;
 
-    [SerializeField] protected Rigidbody _rigidbody;
-    [SerializeField] protected float _speed;
     [SerializeField] protected Vector3 _velocity;
-    [SerializeField] protected bool _isClick = false;
+    [SerializeField] protected Vector3 _up;
 
-    public void OnClick()
+    [SerializeField] protected float _speed;
+    [SerializeField] protected float _jumpPower;
+
+    [SerializeField] protected LayerMask _groundLayerMask;
+
+    private void Start() => Init();
+
+    void Init()
     {
+        _playerController = GetComponentInParent<PlayerController>();
+        _customGravity = _playerController.CustomGravity;
+        _speedManager = _playerController.SpeedManager;
+        _rigidbody = _playerController.Rigidbody;
 
+        StartCoroutine(OnClick());
     }
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
+    public virtual void FixedUpdate() => Move();
 
-    public void Move()
-    {
-        if (_isClick)
-        {
-            _rigidbody.velocity = _velocity;
-        }
-    }
+    public abstract void Move();
+    public abstract void Jumping();
+
+    public abstract IEnumerator OnClick();
 }
