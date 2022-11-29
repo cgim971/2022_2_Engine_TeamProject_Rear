@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: UFO_0
   m_EditorClassIdentifier: 
   _index: 5
-  _model: {fileID: 8197143144793259280, guid: 8092cabb66eb07f49a4bb9e8ecdc028c, type: 3}
-  _sprite: {fileID: 0}
+  _lock: 0
+  _model: {fileID: 2917741962604026555, guid: 8092cabb66eb07f49a4bb9e8ecdc028c, type: 3}
+  _sprite: {fileID: 21300000, guid: 0fa17bd0ee005524e82b3906f4d214fa, type: 3}

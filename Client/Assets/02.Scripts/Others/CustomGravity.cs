@@ -6,7 +6,7 @@ public class CustomGravity : MonoBehaviour
 {
     private Rigidbody _rigidbody;
 
-    float _gravityScale = 4.0f;
+    private float _gravityScale = 4.0f;
     private static float _globalGravity = -9.81f;
 
     private Vector3 _gravityValue = Vector3.zero;
