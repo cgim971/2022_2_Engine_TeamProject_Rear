@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrameManager : MonoBehaviour
+public class FrameManager
 {
-
-    public void SetFrame(float frame)
+    public static void SetFrame(float frame)
     {
         Application.targetFrameRate = (int)frame;
     }
