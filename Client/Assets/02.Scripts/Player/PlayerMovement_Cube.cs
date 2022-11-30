@@ -1,21 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerMovement_Cube : PlayerMovement_Base
 {
-    public override void UseInit() { }
+    float _xIndex = 0;
+    float _yIndex = 0;
+    float _zIndex = 0;
 
-    public override void Move() => _rigidbody.MovePosition(this.gameObject.transform.position + _velocity * _speed * _speedManager.Speed * Time.deltaTime);
+    Sequence _animationSeq = null;
+
+    public override void UseInit()
+    {
+        StartCoroutine(OnClick()); 
+    }
+
+    public override void Move() => _rigidbody.MovePosition(_playerTs.position + _velocity * _speed * _speedManager.Speed * Time.deltaTime);
 
     public override void Jumping()
     {
+        Event_Jump?.Invoke();
+        Animation();
+
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.AddForce(_up * _jumpPower, ForceMode.VelocityChange);
     }
 
-    public override void Animation() { }
+    public override void Animation()
+    {
+        _xIndex++;
+        Vector3 nextRotationValue = new Vector3(90 * _xIndex, 90 * _yIndex, 90 * _zIndex);
 
+        Sequence seq = DOTween.Sequence();
+        seq.Append(_modelTs.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.1f));
+        seq.Append(_modelTs.DORotate(nextRotationValue, 0.3f).SetEase(Ease.Linear));
+        seq.Join(_modelTs.DOScale(new Vector3(1f, 1f, 1f), 0.1f));
+        seq.OnComplete(() => { });
+    }
 
     public override IEnumerator OnClick()
     {

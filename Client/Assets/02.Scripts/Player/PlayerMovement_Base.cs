@@ -10,6 +10,10 @@ public abstract class PlayerMovement_Base : MonoBehaviour
     protected SpeedManager _speedManager;
     protected Rigidbody _rigidbody;
 
+    protected Transform _playerTs;
+    protected Transform _modelTs;
+    protected Transform _colliderTs;
+
     #region Move Property
     #region Move
     [SerializeField] protected Vector3 _velocity;
@@ -34,14 +38,19 @@ public abstract class PlayerMovement_Base : MonoBehaviour
 
     private void Start() => Init();
 
-    void Init()
+    public void Init()
     {
-        _playerController = GetComponentInParent<PlayerController>();
+        _playerController = FindObjectOfType<PlayerController>();
         _customGravity = _playerController.CustomGravity;
         _speedManager = _playerController.SpeedManager;
         _rigidbody = _playerController.Rigidbody;
 
-        StartCoroutine(OnClick());
+        _playerTs = _playerController.transform;
+        _modelTs = transform.Find("Model");
+        _colliderTs = transform.Find("Collider");
+
+        // 이거 수정해야함
+        UseInit();
     }
 
     /// <summary>

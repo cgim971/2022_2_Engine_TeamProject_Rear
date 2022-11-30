@@ -16,12 +16,20 @@ public class ExitPanel : MonoBehaviour
 
     private int _fontSize = 160;
 
+    private void Awake()
+    {
+        _btnCanvasGroup = _btn.GetComponent<CanvasGroup>();
+        _btn.onClick.AddListener(() =>
+        {
+            Debug.Log("종료!");
+            Application.Quit();
+        });
+    }
+
     public void Init()
     {
         _text.text = string.Empty;
         _text.fontSize = 140;
-
-        _btnCanvasGroup = _btn.GetComponent<CanvasGroup>();
 
         _btnCanvasGroup.alpha = 0;
         _btnCanvasGroup.interactable = false;
@@ -37,14 +45,6 @@ public class ExitPanel : MonoBehaviour
             _btnCanvasGroup.blocksRaycasts = true;
         });
         seq.Append(DOTween.To(() => _text.fontSize = 140, x => _text.fontSize = x, _fontSize, 1.5f).SetLoops(-1, LoopType.Yoyo));
-
-
-
-        _btn.onClick.AddListener(() =>
-        {
-            Debug.Log("종료!");
-            Application.Quit();
-        });
     }
 
 
