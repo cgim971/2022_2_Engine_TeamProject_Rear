@@ -2,21 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Object_Jump : MonoBehaviour
+public class Object_Jump : Object_Base
 {
-    private void OnTriggerEnter(Collider other)
+    public override void OffEffect(PlayerMovement_Base player)
     {
-        if (other.CompareTag("Player"))
-        {
-            other.GetComponentInParent<PlayerMovement_Base>().Jumping();
-        }
+        player.Jumping();
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-
-        }
-    }
+    public override void OnEffect(PlayerMovement_Base player) { }
 }

@@ -16,13 +16,12 @@ public abstract class PlayerMovement_Base : MonoBehaviour
 
     #region Move Property
     #region Move
-    [SerializeField] protected Vector3 _velocity;
-    [SerializeField] protected Vector3 _up;
+    [SerializeField] protected Vector3 _dir;
+    protected Vector3 _up;
 
     [SerializeField] protected float _speed;
     #endregion
     #region Jump
-    public UnityEvent Event_Jump;
     [SerializeField] protected float _jumpPower;
 
     [SerializeField] protected LayerMask _groundLayerMask;
@@ -46,8 +45,11 @@ public abstract class PlayerMovement_Base : MonoBehaviour
         _rigidbody = _playerController.Rigidbody;
 
         _playerTs = _playerController.transform;
-        _modelTs = transform.Find("Model");
+        _modelTs = transform?.Find("GimbalLockObject")?.Find("Model");
+        if(_modelTs == null) transform.Find("Model"); 
         _colliderTs = transform.Find("Collider");
+
+        _up = _customGravity._gravity * (-1);
 
         // 이거 수정해야함
         UseInit();

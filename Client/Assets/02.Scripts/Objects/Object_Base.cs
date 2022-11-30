@@ -8,7 +8,7 @@ public abstract class Object_Base : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            OnEffect(other?.GetComponent<PlayerMovement_Base>());
+            OnEffect(other?.GetComponentInParent<PlayerMovement_Base>());
         }
     }
 
@@ -16,7 +16,7 @@ public abstract class Object_Base : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            OffEffect(other?.GetComponent<PlayerMovement_Base>());
+            OffEffect(other?.GetComponentInParent<PlayerMovement_Base>());
         }
     }
 
