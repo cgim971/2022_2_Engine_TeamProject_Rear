@@ -28,9 +28,10 @@ public class PlayerMovement_Cube : PlayerMovement_Base
     {
 
         Sequence seq = DOTween.Sequence();
-        seq.Append(_modelTs.DOScale(new Vector3(0.7f, 0.7f, 0.7f), 0.1f));
-        seq.Append(_modelTs.DOLocalRotate(Vector3.right * 90f, 0.3f).SetEase(Ease.Linear));
-        seq.Join(_modelTs.DOScale(new Vector3(1f, 1f, 1f), 0.1f));
+        seq.Append(_modelTs.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.15f));
+        seq.Join(_modelTs.DOLocalRotate(Vector3.right * 90f, 0.3f).SetEase(Ease.Linear));
+        seq.AppendInterval(0.15f);
+        seq.Join(_modelTs.DOScale(new Vector3(1f, 1f, 1f), 0.15f));
         seq.AppendCallback(() =>
         {
             _gimbalLockTs.rotation = _modelTs.transform.rotation;
