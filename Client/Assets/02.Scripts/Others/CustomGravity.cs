@@ -14,6 +14,13 @@ public class CustomGravity : MonoBehaviour
     private Vector3 _gravityValue = Vector3.zero;
     public Vector3 GravityValue => _gravityValue;
 
+    private bool _isGravity = true;
+    public bool IsGravity
+    {
+        get => _isGravity;
+        set => _isGravity = value;
+    }
+
     private void Awake() => Init();
 
     private void Init()
@@ -26,6 +33,7 @@ public class CustomGravity : MonoBehaviour
 
     private void Gravity()
     {
+        if (!_isGravity) return;
         Vector3 gravity = (_globalGravity * -1) * _gravityScale * _gravity;
         _gravityValue = gravity;
         _rigidbody.AddForce(gravity, ForceMode.Acceleration);
