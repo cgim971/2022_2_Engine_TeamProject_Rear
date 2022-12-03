@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public SpeedManager SpeedManager => _speedManager;
     public Rigidbody Rigidbody => _rigidbody;
     public Transform FollowObjTs => _followObjTs;
+    public Vector3 Up => _up;
+    public Vector3 Dir => _dir;
     #endregion
 
     [SerializeField] private PlayerModeType _currentPlayerMode = PlayerModeType.NONE;
@@ -23,9 +25,8 @@ public class PlayerController : MonoBehaviour
     private Transform _followObjTs;
 
     private Vector3 _up = Vector3.up;
-    public Vector3 Up => _up;
     private Vector3 _dir = Vector3.zero;
-    public Vector3 Dir => _dir;
+
     [SerializeField] private DirType _dirType;
 
 
@@ -41,7 +42,6 @@ public class PlayerController : MonoBehaviour
 
         GetPlayerModeDictionary();
     }
-
     void GetPlayerModeDictionary()
     {
         _playerModeTypeDictionary.Clear();
@@ -60,14 +60,6 @@ public class PlayerController : MonoBehaviour
         SetGravity(_customGravity.GravityType);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SetPlayerMode(PlayerModeType.SHIP);
-        }
-    }
-
     public void SetPlayerMode(PlayerModeType playerMode)
     {
         if (_playerModeTypeDictionary.TryGetValue(_currentPlayerMode, out PlayerMovement_Base currentMode))
@@ -75,7 +67,7 @@ public class PlayerController : MonoBehaviour
             if (currentMode.gameObject.activeSelf)
                 currentMode.gameObject.SetActive(false);
         }
-        // To do : 플레이어 모드 지정
+
         if (_playerModeTypeDictionary.TryGetValue(playerMode, out PlayerMovement_Base mode))
         {
             if (!mode.gameObject.activeSelf)
@@ -108,5 +100,9 @@ public class PlayerController : MonoBehaviour
         _up = _customGravity.GravityDir * (-1);
 
         _playerModeTypeDictionary[_currentPlayerMode]?.SetGravity();
+    }
+    public void SetPortal(Transform portalTs)
+    {
+        this.transform.position = portalTs.position;
     }
 }
