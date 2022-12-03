@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8638895809809e7419e4b11824a4af0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravityType: 1
+  _gravityType: 2
 --- !u!1 &48037191
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,10 +498,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 290784335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207ea81fd2f110c4a8eac65969d26e9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f718516154755642a09608445de29b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravityType: 1
+  _playerMode: 2
 --- !u!135 &290784337
 SphereCollider:
   m_ObjectHideFlags: 0

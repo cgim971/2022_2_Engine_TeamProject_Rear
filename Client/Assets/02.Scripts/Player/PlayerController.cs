@@ -55,19 +55,40 @@ public class PlayerController : MonoBehaviour
     {
         SetDirection(_dirType);
 
+        SetPlayerMode(_currentPlayerMode);
+
+        SetGravity(_customGravity.GravityType);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SetPlayerMode(PlayerModeType.SHIP);
+        }
+    }
+
+    public void SetPlayerMode(PlayerModeType playerMode)
+    {
+        if (_playerModeTypeDictionary.TryGetValue(_currentPlayerMode, out PlayerMovement_Base currentMode))
+        {
+            if (currentMode.gameObject.activeSelf)
+                currentMode.gameObject.SetActive(false);
+        }
         // To do : 플레이어 모드 지정
-        if (_playerModeTypeDictionary.TryGetValue(_currentPlayerMode, out PlayerMovement_Base mode))
+        if (_playerModeTypeDictionary.TryGetValue(playerMode, out PlayerMovement_Base mode))
         {
             if (!mode.gameObject.activeSelf)
+            {
                 mode.gameObject.SetActive(true);
+            }
+
             mode.UseInit();
         }
         else
         {
-            Debug.LogError($"Error Not has key {_currentPlayerMode}");
+            Debug.LogError($"Error Not has key {playerMode}");
         }
-
-        SetGravity(_customGravity.GravityType);
     }
 
     public void SetFollowObj(Vector3 newPos, Vector3 newRot)

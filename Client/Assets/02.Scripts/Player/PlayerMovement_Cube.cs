@@ -27,7 +27,6 @@ public class PlayerMovement_Cube : PlayerMovement_Base
 
     public override void Animation()
     {
-
         Sequence seq = DOTween.Sequence();
         seq.Append(_modelTs.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.15f));
         seq.Join(_modelTs.DOLocalRotate(Vector3.right * 90f, 0.3f).SetEase(Ease.Linear));
