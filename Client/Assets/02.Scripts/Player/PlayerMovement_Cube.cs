@@ -6,8 +6,10 @@ using DG.Tweening;
 public class PlayerMovement_Cube : PlayerMovement_Base
 {
     private Transform _gimbalLockTs;
+
     public override void UseInit()
     {
+        base.UseInit();
         _gimbalLockTs = _modelTs.parent;
         SetGimbalLockObjectRotation();
 

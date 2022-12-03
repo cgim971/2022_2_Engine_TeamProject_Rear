@@ -8,6 +8,7 @@ public class PlayerMovement_Ship : PlayerMovement_Base
 
     public override void UseInit()
     {
+        base.UseInit();
         StartCoroutine(OnClick());
     }
 

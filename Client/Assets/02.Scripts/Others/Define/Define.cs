@@ -4,6 +4,17 @@ using UnityEngine;
 
 namespace Define
 {
+    public enum PlayerModeType
+    {
+        NONE,
+        CUBE,
+        SHIP,
+        UFO,
+        ROBOT,
+        SPIDER,
+        END
+    }
+
     public enum DirType
     {
         NONE,

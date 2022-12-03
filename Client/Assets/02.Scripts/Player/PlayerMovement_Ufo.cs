@@ -9,6 +9,7 @@ public class PlayerMovement_Ufo : PlayerMovement_Base
 
     public override void UseInit()
     {
+        base.UseInit();
         StartCoroutine(OnClick());
     }
 

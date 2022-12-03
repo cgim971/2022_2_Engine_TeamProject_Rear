@@ -9,7 +9,7 @@ public class Object_Gravity : Object_Base
 
     public override void OffEffect(PlayerMovement_Base player)
     {
-        player.CustomGravity.SetGravity(_gravityType);
+        player.PlayerController.SetGravity(_gravityType);
         Effect();
     }
 

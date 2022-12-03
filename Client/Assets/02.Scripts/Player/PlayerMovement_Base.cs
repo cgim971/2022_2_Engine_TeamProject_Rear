@@ -13,12 +13,12 @@ public abstract class PlayerMovement_Base : MonoBehaviour
     public SpeedManager SpeedManager => _speedManager;
     #endregion
 
+    [SerializeField] protected PlayerModeType _mode;
 
     protected PlayerController _playerController;
     protected CustomGravity _customGravity;
     protected SpeedManager _speedManager;
     protected Rigidbody _rigidbody;
-
 
     protected Transform _playerTs;
     protected Transform _modelTs;
@@ -27,8 +27,6 @@ public abstract class PlayerMovement_Base : MonoBehaviour
 
     #region Move Property
     #region Move
-    [Header("World Direction")]
-    [SerializeField] private DirType _dirType;
     // 가는 방향
     protected Vector3 _dir;
     // 중력 반대 값 - 이거 고쳐야 함
@@ -51,7 +49,7 @@ public abstract class PlayerMovement_Base : MonoBehaviour
     #endregion
     #endregion
 
-    private void Start() => Init();
+    private void Awake() => Init();
 
     /// <summary>
     /// 초기 셋팅 함수
@@ -65,13 +63,8 @@ public abstract class PlayerMovement_Base : MonoBehaviour
 
         _playerTs = _playerController.transform;
         _modelTs = transform?.Find("GimbalLockObject")?.Find("Model");
-        if(_modelTs == null) transform.Find("Model"); 
+        if (_modelTs == null) transform.Find("Model");
         _colliderTs = transform.Find("Collider");
-
-        _up = _customGravity.GravityDir * (-1);
-
-        _dir = GetDirection(_dirType);
-        UseInit();
     }
 
 
@@ -81,16 +74,22 @@ public abstract class PlayerMovement_Base : MonoBehaviour
     /// <param name="dirType"></param>
     public void SetDirection(DirType dirType = DirType.NONE)
     {
-        _dirType = dirType;
-        _dir = GetDirection(dirType);
+        PlayerController.SetDirection(dirType);
+        _dir = PlayerController.Dir;
+
         this?.GetComponent<PlayerMovement_Cube>()?.SetGimbalLockObjectRotation();
     }
 
+    public void SetGravity() => _up = _playerController.Up;
 
     /// <summary>
     /// 사용 될 때 부르는 함수
     /// </summary>
-    public abstract void UseInit();
+    public virtual void UseInit()
+    {
+        _dir = PlayerController.Dir;
+        _up = PlayerController.Up;
+    }
 
     public virtual void FixedUpdate() => Move();
 
