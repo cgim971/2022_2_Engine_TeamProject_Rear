@@ -34,6 +34,7 @@ public class StartUIManager : MonoBehaviour
         _fadeImage = GameManager.Instance.uiManager.FadeImage;
     }
 
+    // 고칠 것 : 모션 
     public void Exit()
     {
         Sequence seq = DOTween.Sequence();

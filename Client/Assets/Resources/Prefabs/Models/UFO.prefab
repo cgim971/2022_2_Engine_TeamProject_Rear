@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 7819158619685455656}
   m_Layer: 7
   m_Name: Ring
-  m_TagString: Player
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,12 +136,12 @@ GameObject:
   - component: {fileID: 2917741962604026556}
   - component: {fileID: 1438367461}
   m_Layer: 6
-  m_Name: Ufo
+  m_Name: UFO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2917741962604026556
 Transform:
   m_ObjectHideFlags: 0
@@ -170,12 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5729fe11a9d0f54e80039c73605bd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: {x: 0, y: 0, z: 1}
-  _up: {x: 0, y: 1, z: 0}
+  _dirType: 4
   _speed: 5
-  Event_Jump:
-    m_PersistentCalls:
-      m_Calls: []
   _jumpPower: 18
   _groundLayerMask:
     serializedVersion: 2
@@ -195,7 +191,7 @@ GameObject:
   - component: {fileID: 4334972640342806541}
   m_Layer: 7
   m_Name: Model_Ufo
-  m_TagString: Player
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

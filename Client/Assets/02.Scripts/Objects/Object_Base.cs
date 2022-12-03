@@ -22,4 +22,6 @@ public abstract class Object_Base : MonoBehaviour
 
     public abstract void OnEffect(PlayerMovement_Base player);
     public abstract void OffEffect(PlayerMovement_Base player);
+
+    public abstract void Effect();
 }

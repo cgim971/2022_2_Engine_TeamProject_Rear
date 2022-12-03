@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Object_Jump : Object_Base
+using Define;
+public class Object_Direction : Object_Base
 {
-
+    [SerializeField] private DirType _dirType;
     public override void OffEffect(PlayerMovement_Base player)
     {
-        player.Jumping();
+        player.SetDirection(_dirType);
         Effect();
     }
 
     public override void OnEffect(PlayerMovement_Base player) { }
-    public override void Effect() { }
 
+    public override void Effect() { }
 }

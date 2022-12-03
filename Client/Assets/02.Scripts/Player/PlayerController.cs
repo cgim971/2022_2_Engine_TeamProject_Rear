@@ -21,6 +21,4 @@ public class PlayerController : MonoBehaviour
         _speedManager = GetComponent<SpeedManager>();
         _rigidbody = GetComponent<Rigidbody>();
     }
-
-
 }

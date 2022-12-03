@@ -6,7 +6,6 @@ using DG.Tweening;
 public class PlayerMovement_Cube : PlayerMovement_Base
 {
     private Transform _gimbalLockTs;
-
     public override void UseInit()
     {
         _gimbalLockTs = _modelTs.parent;

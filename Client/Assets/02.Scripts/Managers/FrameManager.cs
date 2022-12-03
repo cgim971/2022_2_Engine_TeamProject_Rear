@@ -8,4 +8,6 @@ public class FrameManager
     {
         Application.targetFrameRate = (int)frame;
     }
+
+    // To do : 퀄리티 조정도 넣을 예정
 }

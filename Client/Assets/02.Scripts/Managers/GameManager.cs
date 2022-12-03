@@ -7,6 +7,8 @@ public class GameManager : MonoSingleton<GameManager>
     public UIManager uiManager { get; private set; }
     public SceneManager sceneManager { get; private set; }
 
+    // To do : 풀링 매니저도 넣을 예정
+
     [SerializeField] private float _frame = 30f;
 
 
@@ -22,6 +24,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Update()
     {
+        // Test code
         if (Input.GetKeyDown(KeyCode.K))
         {
             sceneManager.LoadingScene("Stage_1");
