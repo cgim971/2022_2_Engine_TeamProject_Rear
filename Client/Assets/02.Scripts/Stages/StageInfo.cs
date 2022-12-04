@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageInfo : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Button _stageBtn;
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _stageBtn = GetComponent<Button>();
+        _stageBtn.onClick.AddListener(() => GameManager.Instance.sceneManager.LoadingScene("Stage_1"));
     }
 }

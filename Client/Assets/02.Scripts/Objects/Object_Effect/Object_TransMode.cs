@@ -7,12 +7,12 @@ public class Object_TransMode : Object_Base
 {
     [SerializeField] private PlayerModeType _playerMode;
 
-    public override void OffEffect(PlayerMovement_Base player)
+    public override void OnEffect(PlayerMovement_Base player)
     {
+        Debug.Log(player.transform.position);
         player.PlayerController.SetPlayerMode(_playerMode);
         Effect();
     }
-
-    public override void OnEffect(PlayerMovement_Base player) { }
+    public override void OffEffect(PlayerMovement_Base player) { }
     public override void Effect() { }
 }

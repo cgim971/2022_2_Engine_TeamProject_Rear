@@ -46,5 +46,4 @@ public class PreviewModel : MonoBehaviour
         GameObject newModel = Instantiate(model, transform);
         newModel.transform.position = Vector3.zero;
     }
-
 }

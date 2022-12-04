@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 6
   _lock: 1
-  _model: {fileID: 2917741962604026555, guid: 8092cabb66eb07f49a4bb9e8ecdc028c, type: 3}
+  _model: {fileID: 5988291534813492160, guid: 16f7266af51dec2418a1d6b196b62e31, type: 3}
   _sprite: {fileID: 21300000, guid: 0fa17bd0ee005524e82b3906f4d214fa, type: 3}

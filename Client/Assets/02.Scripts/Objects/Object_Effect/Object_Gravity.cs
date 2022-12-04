@@ -7,12 +7,12 @@ public class Object_Gravity : Object_Base
 {
     [SerializeField] private DirType _gravityType;
 
-    public override void OffEffect(PlayerMovement_Base player)
+
+    public override void OnEffect(PlayerMovement_Base player)
     {
         player.PlayerController.SetGravity(_gravityType);
         Effect();
     }
-
-    public override void OnEffect(PlayerMovement_Base player) { }
+    public override void OffEffect(PlayerMovement_Base player) { }
     public override void Effect() { }
 }

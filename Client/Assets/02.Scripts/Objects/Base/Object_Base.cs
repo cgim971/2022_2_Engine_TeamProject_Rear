@@ -4,11 +4,20 @@ using UnityEngine;
 
 public abstract class Object_Base : MonoBehaviour
 {
+    bool _isUse = false;
+    [SerializeField] private bool _isMore = false;
+
+    private void Awake()
+    {
+        this.GetComponent<Collider>().isTrigger = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !_isUse)
         {
-            OnEffect(other?.GetComponentInParent<PlayerMovement_Base>());
+            _isUse = true;
+            OnEffect(other.GetComponentInParent<PlayerMovement_Base>());
         }
     }
 
@@ -16,7 +25,9 @@ public abstract class Object_Base : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            OffEffect(other?.GetComponentInParent<PlayerMovement_Base>());
+            OffEffect(other.GetComponentInParent<PlayerMovement_Base>());
+
+            if (_isMore) _isUse = false;
         }
     }
 

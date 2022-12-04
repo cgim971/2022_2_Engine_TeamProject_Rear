@@ -7,7 +7,6 @@ public class PreviewPanel : MonoBehaviour, IBeginDragHandler, IDragHandler, IPoi
 {
     [SerializeField] private PreviewModel _previewModel;
 
-
     Vector2 _mousePosition;
     public void OnBeginDrag(PointerEventData eventData)
     {
