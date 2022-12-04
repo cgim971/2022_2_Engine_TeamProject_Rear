@@ -9,7 +9,6 @@ public class Object_TransMode : Object_Base
 
     public override void OnEffect(PlayerMovement_Base player)
     {
-        Debug.Log(player.transform.position);
         player.PlayerController.SetPlayerMode(_playerMode);
         Effect();
     }

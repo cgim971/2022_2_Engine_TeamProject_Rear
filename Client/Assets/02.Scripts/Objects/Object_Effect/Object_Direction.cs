@@ -8,11 +8,32 @@ public class Object_Direction : Object_Base
 
     public override void OnEffect(PlayerMovement_Base player)
     {
-        // 수정 필요 오브젝트의 중앙에 오면으로 바뀔 예정
-
-        player.transform.position = this.transform.position;
-        player.SetDirection(_dirType);
+        StartCoroutine(ObjectA(player));
     }
+
+    private IEnumerator ObjectA(PlayerMovement_Base obj)
+    {
+        Vector3 value = Vector3.zero;
+        float distance = 0f;
+
+        while (true)
+        {
+            yield return null;
+
+            value = obj.GetComponentInChildren<Collider>().bounds.center - this.transform.position;
+            distance = Mathf.Abs(value.magnitude);
+
+            if (distance <= 0.52f)
+            {
+                obj.transform.parent.position = this.transform.position;
+                obj.SetDirection(_dirType);
+
+                yield break;
+            }
+        }
+    }
+
+
     public override void OffEffect(PlayerMovement_Base player) { }
     public override void Effect() { }
 }

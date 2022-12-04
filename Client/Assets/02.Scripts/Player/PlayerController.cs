@@ -29,8 +29,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private DirType _dirType;
 
-
-
     private void Awake() => Init();
 
     void Init()
@@ -68,7 +66,6 @@ public class PlayerController : MonoBehaviour
             if (currentMode.gameObject.activeSelf)
                 currentMode.gameObject.SetActive(false);
         }
-        Debug.Log(currentMode.gameObject.transform.position);
 
         if (_playerModeTypeDictionary.TryGetValue(playerMode, out PlayerMovement_Base mode))
         {
@@ -76,7 +73,6 @@ public class PlayerController : MonoBehaviour
             {
                 mode.gameObject.SetActive(true);
             }
-
             mode.UseInit();
         }
         else
@@ -84,8 +80,6 @@ public class PlayerController : MonoBehaviour
             Debug.LogError($"Error Not has key {playerMode}");
         }
         _currentPlayerMode = playerMode;
-
-        Debug.Log(mode.gameObject.transform.position);
     }
 
     public void SetFollowObj(Vector3 newPos, Vector3 newRot)
