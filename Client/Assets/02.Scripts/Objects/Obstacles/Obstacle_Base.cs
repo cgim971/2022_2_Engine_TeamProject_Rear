@@ -17,8 +17,9 @@ public abstract class Obstacle_Base : Object_Base
         while (true)
         {
             transform.GetComponent<MeshRenderer>().material.DOFade(1f, 1f);
+            yield return new WaitForSeconds(1f);
             transform.GetComponent<MeshRenderer>().material.DOFade(0f, 1f);
-            yield return null;
+            yield return new WaitForSeconds(1f);
         }
     }
 
