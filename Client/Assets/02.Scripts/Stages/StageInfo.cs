@@ -9,6 +9,6 @@ public class StageInfo : MonoBehaviour
     private void Start()
     {
         _stageBtn = GetComponent<Button>();
-        _stageBtn.onClick.AddListener(() => GameManager.Instance.sceneManager.LoadingScene("Stage_1"));
+        _stageBtn.onClick.AddListener(() => GameManager.Instance.sceneManager.StageScene("Stage_1"));
     }
 }

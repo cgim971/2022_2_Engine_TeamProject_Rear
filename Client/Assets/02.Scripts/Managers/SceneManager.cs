@@ -19,15 +19,22 @@ public class SceneManager : MonoBehaviour
         _loadingText = GameManager.Instance.uiManager.LoadingText;
     }
 
-    public static void LoadScene(string sceneName)
+    public static void LoadScene(string sceneName) => LoadScene(sceneName, LoadSceneMode.Single);
+
+    public static void LoadScene(string sceneName, LoadSceneMode mode)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName, mode);
     }
 
     public void LoadingScene(string sceneName)
     {
         _nextScene = sceneName;
         StartCoroutine(LoadingScene());
+    }
+
+    public void StageScene(string sceneName)
+    {
+        LoadingScene(sceneName);
     }
 
     IEnumerator LoadingScene()
@@ -43,16 +50,16 @@ public class SceneManager : MonoBehaviour
         while (!op.isDone)
         {
             yield return null;
-           
+
             if (op.progress < 0.9f)
             {
-                
+
             }
             else
             {
                 op.allowSceneActivation = true;
                 _loadingImage.DOFade(0f, 0.2f);
-
+                LoadScene("GameUI", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 yield break;
             }
         }

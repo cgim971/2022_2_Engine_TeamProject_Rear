@@ -27,7 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
         // Test code
         if (Input.GetKeyDown(KeyCode.K))
         {
-            sceneManager.LoadingScene("Stage_1");
+            sceneManager.StageScene("Stage_1");
         }
     }
 }
