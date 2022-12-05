@@ -8,7 +8,7 @@ public abstract class Object_Base : MonoBehaviour
     bool _isUse = false;
     [SerializeField] private bool _isMore = false;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         this.GetComponent<Collider>().isTrigger = true;
     }
@@ -52,7 +52,7 @@ public abstract class Object_Base : MonoBehaviour
             if (distance <= 0.52f)
             {
                 obj.transform.parent.position = this.transform.position;
-                Callback(); 
+                Callback();
 
                 yield break;
             }
