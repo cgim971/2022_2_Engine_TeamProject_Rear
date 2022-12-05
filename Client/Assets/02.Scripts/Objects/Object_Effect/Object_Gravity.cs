@@ -10,7 +10,7 @@ public class Object_Gravity : Object_Base
 
     public override void OnEffect(PlayerMovement_Base player)
     {
-        player.PlayerController.SetGravity(_gravityType);
+        StartCoroutine(ObjectCenter(player, () => player.PlayerController.SetGravity(_gravityType)));
         Effect();
     }
     public override void OffEffect(PlayerMovement_Base player) { }

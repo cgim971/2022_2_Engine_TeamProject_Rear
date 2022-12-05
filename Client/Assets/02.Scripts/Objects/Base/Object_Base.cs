@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,4 +36,27 @@ public abstract class Object_Base : MonoBehaviour
     public abstract void OffEffect(PlayerMovement_Base player);
 
     public abstract void Effect();
+
+    protected IEnumerator ObjectCenter(PlayerMovement_Base obj, Action Callback)
+    {
+        Vector3 value = Vector3.zero;
+        float distance = 0f;
+
+        while (true)
+        {
+            yield return null;
+
+            value = obj.GetComponentInChildren<Collider>().bounds.center - this.transform.position;
+            distance = Mathf.Abs(value.magnitude);
+
+            if (distance <= 0.52f)
+            {
+                obj.transform.parent.position = this.transform.position;
+                Callback(); 
+
+                yield break;
+            }
+        }
+    }
+
 }
