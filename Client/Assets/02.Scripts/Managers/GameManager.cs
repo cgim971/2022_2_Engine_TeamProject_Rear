@@ -30,7 +30,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private float _frame = 30f;
     private int _tryCount = 1;
     private StageSO _currentStageSO;
-    [SerializeField] private StageListSO _stageList;    
+    [SerializeField] private StageListSO _stageList;
 
     private void Awake() => Init();
 
@@ -39,8 +39,14 @@ public class GameManager : MonoSingleton<GameManager>
         uiManager = this.GetComponent<UIManager>();
         sceneManager = this.GetComponent<SceneManager>();
         _currentStageSO = _stageList._stageList[0];
-        
 
         FrameManager.SetFrame(_frame);
+    }
+
+
+    //Test code
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) SoundManager.PlayOnShot(Define.SoundType.EFFECT, "Click");
     }
 }

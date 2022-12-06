@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PoolingManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+//    Dictionary<string, Object> _objectDictionary = new Dictionary<string, Object>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+//    private void Awake()
+//    {
+//        GameObject newRoot = new GameObject();
+//        newRoot.name = "@Pool";
+//        newRoot.transform.SetParent(this.transform);
+//    }
 }

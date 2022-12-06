@@ -27,6 +27,13 @@ namespace Define
         END
     }
 
+    public enum SoundType
+    {
+        BGM,
+        EFFECT,
+        END
+    }
+
     public static class Gravity
     {
         public static Vector3 GetGravity(DirType gravityType)
