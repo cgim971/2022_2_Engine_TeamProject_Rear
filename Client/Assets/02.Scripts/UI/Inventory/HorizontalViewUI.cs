@@ -43,6 +43,4 @@ public class HorizontalViewUI : MonoBehaviour
         newSlot.GetComponent<SlotUI>().VerticalView = _verticalView;
         newSlot.GetComponent<SlotUI>().Init();
     }
-
-
 }

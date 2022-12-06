@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efc1b3979b2cf64408a866affa20b8fa, type: 3}
-  m_Name: Stage_1
+  m_Name: Stage_CommingSoon
   m_EditorClassIdentifier: 
-  _stageIndex: 1
-  _stageName: Kiki
-  _stageMode: 1
+  _stageIndex: 0
+  _stageName: :( comming soon..
+  _stageMode: 0
   _isMain: 0
+  _isComming: 1

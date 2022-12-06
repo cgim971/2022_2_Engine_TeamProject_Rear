@@ -9,4 +9,7 @@ public class StageSO : ScriptableObject
     public int _stageIndex;
     public string _stageName;
     public PlayerModeType _stageMode;
+
+    public bool _isMain;
+    public bool _isComming;
 }

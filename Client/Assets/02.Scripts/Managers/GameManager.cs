@@ -12,20 +12,25 @@ public class GameManager : MonoSingleton<GameManager>
         set => _tryCount = value;
     }
 
-    public StageSO StageSO
+    public StageSO CurrentStageSO
     {
-        get => _stageSO;
+        get => _currentStageSO;
         set
         {
-            _stageSO = value;
+            _currentStageSO._stageIndex = value._stageIndex;
+            _currentStageSO._stageName = value._stageName;
+            _currentStageSO._stageMode = value._stageMode;
+
             TryCount = 1;
         }
     }
+    public StageListSO StageListSO => _stageList;
     // To do : 풀링 매니저도 넣을 예정
 
     [SerializeField] private float _frame = 30f;
     private int _tryCount = 1;
-    private StageSO _stageSO;
+    private StageSO _currentStageSO;
+    [SerializeField] private StageListSO _stageList;    
 
     private void Awake() => Init();
 
@@ -33,6 +38,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         uiManager = this.GetComponent<UIManager>();
         sceneManager = this.GetComponent<SceneManager>();
+        _currentStageSO = _stageList._stageList[0];
+        
 
         FrameManager.SetFrame(_frame);
     }

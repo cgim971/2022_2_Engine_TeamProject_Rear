@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _currentPlayerMode = GameManager.Instance.StageSO._stageMode;
+        _currentPlayerMode = GameManager.Instance.CurrentStageSO._stageMode;
 
         SetDirection(_dirType);
 
