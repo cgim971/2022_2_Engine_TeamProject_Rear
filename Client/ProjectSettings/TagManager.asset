@@ -7,6 +7,7 @@ TagManager:
   - Object
   - Model
   - Collider
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Ground
   - BackGround
   - PostProcessing
-  - 
-  - 
+  - Object
+  - Obstacle
   - 
   - 
   - 

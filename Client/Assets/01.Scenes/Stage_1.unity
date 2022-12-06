@@ -136,9 +136,9 @@ GameObject:
   - component: {fileID: 22848174}
   - component: {fileID: 22848173}
   - component: {fileID: 22848172}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trans
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -498,9 +498,9 @@ GameObject:
   - component: {fileID: 333761777}
   - component: {fileID: 333761776}
   - component: {fileID: 333761780}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -622,9 +622,9 @@ GameObject:
   - component: {fileID: 354195754}
   - component: {fileID: 354195753}
   - component: {fileID: 354195752}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -828,9 +828,9 @@ GameObject:
   - component: {fileID: 391554803}
   - component: {fileID: 391554802}
   - component: {fileID: 391554801}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ObjectDir
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5977,9 +5977,9 @@ GameObject:
   - component: {fileID: 651467660}
   - component: {fileID: 651467659}
   - component: {fileID: 651467658}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trans
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6087,9 +6087,9 @@ GameObject:
   - component: {fileID: 682480332}
   - component: {fileID: 682480331}
   - component: {fileID: 682480330}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6196,9 +6196,9 @@ GameObject:
   - component: {fileID: 761458836}
   - component: {fileID: 761458835}
   - component: {fileID: 761458834}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6306,9 +6306,9 @@ GameObject:
   - component: {fileID: 783176450}
   - component: {fileID: 783176449}
   - component: {fileID: 783176448}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6418,9 +6418,9 @@ GameObject:
   - component: {fileID: 802106732}
   - component: {fileID: 802106731}
   - component: {fileID: 802106730}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (8)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6568,9 +6568,9 @@ GameObject:
   - component: {fileID: 881331339}
   - component: {fileID: 881331338}
   - component: {fileID: 881331337}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6678,9 +6678,9 @@ GameObject:
   - component: {fileID: 932414832}
   - component: {fileID: 932414831}
   - component: {fileID: 932414830}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6820,9 +6820,9 @@ GameObject:
   - component: {fileID: 1021452985}
   - component: {fileID: 1021452988}
   - component: {fileID: 1021452987}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6930,9 +6930,9 @@ GameObject:
   - component: {fileID: 1032492060}
   - component: {fileID: 1032492059}
   - component: {fileID: 1032492058}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Clear
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7039,9 +7039,9 @@ GameObject:
   - component: {fileID: 1038887837}
   - component: {fileID: 1038887839}
   - component: {fileID: 1038887838}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7249,9 +7249,9 @@ GameObject:
   - component: {fileID: 1301208264}
   - component: {fileID: 1301208263}
   - component: {fileID: 1301208262}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (7)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7427,7 +7427,7 @@ GameObject:
   - component: {fileID: 1339168397}
   - component: {fileID: 1339168400}
   - component: {fileID: 1339168401}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Portal_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7700,9 +7700,9 @@ GameObject:
   - component: {fileID: 1489870266}
   - component: {fileID: 1489870268}
   - component: {fileID: 1489870267}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7923,9 +7923,9 @@ GameObject:
   - component: {fileID: 1711899578}
   - component: {fileID: 1711899577}
   - component: {fileID: 1711899576}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8033,9 +8033,9 @@ GameObject:
   - component: {fileID: 1748595636}
   - component: {fileID: 1748595635}
   - component: {fileID: 1748595638}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Portal
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8237,9 +8237,9 @@ GameObject:
   - component: {fileID: 1896848552}
   - component: {fileID: 1896848554}
   - component: {fileID: 1896848553}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8347,9 +8347,9 @@ GameObject:
   - component: {fileID: 1897292785}
   - component: {fileID: 1897292784}
   - component: {fileID: 1897292783}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (6)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

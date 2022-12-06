@@ -32,11 +32,16 @@ public class SceneManager : MonoBehaviour
         StartCoroutine(LoadingScene());
     }
 
-    public void StageScene(string sceneName)
+    public void StageScene(StageSO stageSO)
     {
-        LoadingScene(sceneName);
+        GameManager.Instance.StageSO = stageSO;
+        LoadingScene(stageSO._stageName);
     }
-
+    public void Stage(string sceneName)
+    {
+        LoadScene(sceneName);
+        LoadScene("GameUI", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+    }
     IEnumerator LoadingScene()
     {
         yield return null;
@@ -65,6 +70,4 @@ public class SceneManager : MonoBehaviour
         }
 
     }
-
-
 }
