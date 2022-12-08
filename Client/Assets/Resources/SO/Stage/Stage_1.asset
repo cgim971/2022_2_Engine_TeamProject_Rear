@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageIndex: 1
   _stageName: Kiki
-  _stageMode: 1
+  _stageMode: 3
   _isMain: 0
+  _isComming: 0

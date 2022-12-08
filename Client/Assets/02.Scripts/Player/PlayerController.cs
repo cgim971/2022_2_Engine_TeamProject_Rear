@@ -1,9 +1,10 @@
-using Define;
-using static Define.Direction;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Define;
+using static Define.Direction;
+using static Define.Gravity;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,23 +12,25 @@ public class PlayerController : MonoBehaviour
     public CustomGravity CustomGravity => _customGravity;
     public SpeedManager SpeedManager => _speedManager;
     public Rigidbody Rigidbody => _rigidbody;
-    public Transform FollowObjTs => _followObjTs;
-    public Vector3 Up => _up;
+
     public Vector3 Dir => _dir;
+    public Vector3 Gravity => _gravity;
     #endregion
 
-    [SerializeField] private PlayerModeType _currentPlayerMode = PlayerModeType.NONE;
-    private Dictionary<PlayerModeType, PlayerMovement_Base> _playerModeTypeDictionary = new Dictionary<PlayerModeType, PlayerMovement_Base>();
+    private CustomGravity _customGravity = null;
+    private SpeedManager _speedManager = null;
+    private Rigidbody _rigidbody = null;
 
-    private CustomGravity _customGravity;
-    private SpeedManager _speedManager;
-    private Rigidbody _rigidbody;
-    private Transform _followObjTs;
-
-    private Vector3 _up = Vector3.up;
+    // 플레이어 진행 방향
     private Vector3 _dir = Vector3.zero;
+    [SerializeField] private DirType _gravityType;
 
+    // 플레이어 중력 방향
+    private Vector3 _gravity = Vector3.zero;
     [SerializeField] private DirType _dirType;
+
+    // 플레이어 방향에 맞게 회전 할 트랜스폼
+    private Transform _rotateTs = null;
 
     private void Awake() => Init();
 
@@ -36,74 +39,222 @@ public class PlayerController : MonoBehaviour
         _customGravity = GetComponent<CustomGravity>();
         _speedManager = GetComponent<SpeedManager>();
         _rigidbody = GetComponent<Rigidbody>();
-        _followObjTs = transform?.Find("FollowObject");
 
-        GetPlayerModeDictionary();
+        _rotateTs = transform.Find("RotateObj");
+
+        SetGravity(_gravityType);
+        SetDir(_dirType);
     }
-    void GetPlayerModeDictionary()
+
+    [ContextMenu("asdf")]
+    private void DebugText()
     {
-        _playerModeTypeDictionary.Clear();
-
-        _playerModeTypeDictionary.Add(PlayerModeType.CUBE, transform.Find("Cube")?.GetComponent<PlayerMovement_Base>());
-        _playerModeTypeDictionary.Add(PlayerModeType.SHIP, transform.Find("Ship")?.GetComponent<PlayerMovement_Base>());
-        _playerModeTypeDictionary.Add(PlayerModeType.UFO, transform.Find("Ufo")?.GetComponent<PlayerMovement_Base>());
+        Debug.Log(Vector3.Max(Vector3.back, Vector3.zero));
+        Debug.Log(Vector3.Max(Vector3.forward, Vector3.zero));
+        Debug.Log(Vector3.Dot(Vector3.left, Vector3.zero));
+        Debug.Log(Vector3.Dot(Vector3.right, Vector3.zero));
     }
 
-    private void Start()
+    // 중력을 변경
+    public void SetGravity(DirType gravityType)
     {
-        _currentPlayerMode = GameManager.Instance.CurrentStageSO._stageMode;
-
-        SetDirection(_dirType);
-
-        SetPlayerMode(_currentPlayerMode);
-
-        SetGravity(_customGravity.GravityType);
+        _gravityType = gravityType;
+        _gravity = _customGravity.SetGravity(_gravityType);
     }
 
-    public void SetPlayerMode(PlayerModeType playerMode)
+    public void ReverseGravity()
     {
-
-        if (_playerModeTypeDictionary.TryGetValue(_currentPlayerMode, out PlayerMovement_Base currentMode))
-        {
-            if (currentMode.gameObject.activeSelf)
-                currentMode.gameObject.SetActive(false);
-        }
-
-        if (_playerModeTypeDictionary.TryGetValue(playerMode, out PlayerMovement_Base mode))
-        {
-            if (!mode.gameObject.activeSelf)
-            {
-                mode.gameObject.SetActive(true);
-            }
-            mode.UseInit();
-        }
-        else
-        {
-            Debug.LogError($"Error Not has key {playerMode}");
-        }
-        _currentPlayerMode = playerMode;
+        _gravityType = GetReverseGravityType(_gravityType);
+        _gravity = _customGravity.SetGravity(_gravityType);
     }
 
-    public void SetFollowObj(Vector3 newPos, Vector3 newRot)
-    {
-        // To do : 카메라가 회전 부드럽게 플레이어를 중심으로 돌면서
-        _followObjTs.DOLocalMove(newPos, 1f);
-        _followObjTs.DORotate(newRot, 1f);
-    }
-    public void SetDirection(DirType dirType = DirType.NONE)
+    // 방향을 변경
+    public void SetDir(DirType dirType)
     {
         _dirType = dirType;
         _dir = GetDirection(dirType);
-    }
-    public void SetGravity(DirType gravityType)
-    {
-        _customGravity.SetGravity(gravityType);
-        _up = _customGravity.GravityDir * (-1);
 
-        _playerModeTypeDictionary[_currentPlayerMode]?.SetGravity();
+        RotateObj();
     }
-    public void SetPortal(Transform portalTs)
+
+    private void Update()
     {
-        this.transform.position = portalTs.position;
+        if (Input.GetKeyDown(KeyCode.Space)) RotateObj();
     }
+
+    private Vector3 VectorAbs(Vector3 value)
+    {
+        return new Vector3(Mathf.Abs(value.x), Mathf.Abs(value.y), Mathf.Abs(value.z));
+    }
+
+    // 중력과 방향을 이용하여 바라보는 오브젝트를 회전
+    public void RotateObj()
+    {
+        _dir = GetDirection(_dirType);
+        _gravity = _customGravity.SetGravity(_gravityType);
+        _rotateTs.transform.rotation = Quaternion.identity;
+        // 0 -1 1  0   0   0
+        // 0 1 1   0   180 0
+        // 1 0 1   0   0   90
+        // 1 0 -1  180 0   90
+        // 1 -1 0  0   90  0    
+        // 0 1 0 -1 0 0
+        _rotateTs.transform.forward = _dir;
+
+        //if(_dir == Vector3.up)
+        //{
+        //    _rotateTs.transform.rotation = Quaternion.Euler(-90f, 0f, 90f);
+        //}
+        //else if(_dir == Vector3.down)
+        //{
+        //    _rotateTs.transform.rotation = Quaternion.Euler(90f, 0f, 90f);
+        //}
+        if (Vector3.Max(_gravity, Vector3.zero) == Vector3.zero)
+        {
+            Quaternion rotate = Quaternion.AngleAxis(0f + (-_gravity.x * 90f + 180f), _dir);
+            //Vector3 euler = rotate.eulerAngles;
+            //euler.z += _dir.y * 90f;
+
+            _rotateTs.transform.Rotate(rotate.eulerAngles);
+            //_rotateTs.transform.Rotate(euler);
+        }
+        else
+        {
+            Quaternion rotate = Quaternion.AngleAxis(180f + (_gravity.x * 90f + 180f), _dir);
+            //Vector3 euler = rotate.eulerAngles;
+            //euler.z += _dir.y * 90f;
+
+            _rotateTs.transform.Rotate(rotate.eulerAngles);
+
+        }
+
+
+        //Debug.Log(_dir + " " + _rotateTs.transform.forward);
+
+
+        //Quaternion rotate = Quaternion.identity;
+
+
+        {
+            //if (_gravityType == DirType.DOWN)
+            //{
+            //    if (_dirType == DirType.FORWARD)
+            //    {
+            //        rotate = Quaternion.identity;
+            //    }
+            //    else if (_dirType == DirType.BACKWARD)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.up * 180);
+            //    }
+            //    else if (_dirType == DirType.LEFT)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.up * -90);
+            //    }
+            //    else if (_dirType == DirType.RIGHT)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.up * 90);
+            //    }
+            //}
+            //else if (_gravityType == DirType.UP)
+            //{
+            //    // Vector3.forward == 0, 0, 1
+            //    if (_dirType == DirType.FORWARD)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.forward * 180);
+            //    }
+            //    else if (_dirType == DirType.BACKWARD)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.up * 180 + Vector3.forward * 180);
+            //    }
+            //    else if (_dirType == DirType.LEFT)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.up * -90 + Vector3.forward * 180);
+            //    }
+            //    else if (_dirType == DirType.RIGHT)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.up * 90 + Vector3.forward * 180);
+            //    }
+            //}
+            //else if (_gravityType == DirType.LEFT)
+            //{
+            //    if (_dirType == DirType.FORWARD)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.forward * -90);
+            //    }
+            //    else if (_dirType == DirType.BACKWARD)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.right * 180 + Vector3.forward * -90);
+            //    }
+            //    else if (_dirType == DirType.UP)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.right * -90 + Vector3.forward * -90);
+            //    }
+            //    else if (_dirType == DirType.DOWN)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.right * 90 + Vector3.forward * -90);
+            //    }
+            //}
+            //else if (_gravityType == DirType.RIGHT)
+            //{
+            //    if (_dirType == DirType.FORWARD)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.forward * 90);
+            //    }
+            //    else if (_dirType == DirType.BACKWARD)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.right * 180 + Vector3.forward * 90);
+            //    }
+            //    else if (_dirType == DirType.UP)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.right * -90 + Vector3.forward * 90);
+            //    }
+            //    else if (_dirType == DirType.DOWN)
+            //    {
+            //        rotate = Quaternion.Euler(Vector3.right * 90 + Vector3.forward * 90);
+            //    }
+            //}
+            //else if (_gravityType == DirType.FORWARD)
+            //{
+            //    if (_dirType == DirType.UP)
+            //    {
+            //        rotate = Quaternion.Euler(new Vector3(-90, -90, 90));
+            //    }
+            //    else if (_dirType == DirType.DOWN)
+            //    {
+            //        rotate = Quaternion.Euler(new Vector3(90, -90, 90));
+            //    }
+            //    else if (_dirType == DirType.LEFT)
+            //    {
+            //        rotate = Quaternion.Euler(new Vector3(-180, 90, -90));
+            //    }
+            //    else if (_dirType == DirType.RIGHT)
+            //    {
+            //        rotate = Quaternion.Euler(new Vector3(-180, -90, 90));
+            //    }
+            //}
+            //else if (_gravityType == DirType.BACKWARD)
+            //{
+            //    if (_dirType == DirType.UP)
+            //    {
+            //        rotate = Quaternion.Euler(new Vector3(-90, -180, 0));
+            //    }
+            //    else if (_dirType == DirType.DOWN)
+            //    {
+            //        rotate = Quaternion.Euler(new Vector3(90, -270, 90));
+            //    }
+            //    else if (_dirType == DirType.LEFT)
+            //    {
+            //        rotate = Quaternion.Euler(new Vector3(180, -270, 90));
+            //    }
+            //    else if (_dirType == DirType.RIGHT)
+            //    {
+            //        rotate = Quaternion.Euler(new Vector3(360, -270, 90));
+            //    }
+            //}
+
+            //Debug.Log(rotate.eulerAngles);
+            //_rotateTs.DORotateQuaternion(rotate, 0.2f);
+        }
+    }
+
 }

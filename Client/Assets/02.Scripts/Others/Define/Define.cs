@@ -10,6 +10,7 @@ namespace Define
         CUBE,
         SHIP,
         UFO,
+        ARROW,
         ROBOT,
         SPIDER,
         END
@@ -49,6 +50,19 @@ namespace Define
             }
             return Vector3.zero;
         }
+        public static DirType GetReverseGravityType(DirType gravityType)
+        {
+            switch(gravityType)
+            {
+                case DirType.UP: return DirType.DOWN;
+                case DirType.DOWN: return DirType.UP;
+                case DirType.LEFT: return DirType.RIGHT;
+                case DirType.RIGHT: return DirType.LEFT;
+                case DirType.FORWARD: return DirType.BACKWARD;
+                case DirType.BACKWARD: return DirType.FORWARD;
+            }
+            return DirType.NONE;
+        }
     }
 
     public static class Direction
@@ -66,6 +80,11 @@ namespace Define
             }
             return Vector3.zero;
         }
+    }
+
+    public static class Player
+    {
+
     }
 }
 
