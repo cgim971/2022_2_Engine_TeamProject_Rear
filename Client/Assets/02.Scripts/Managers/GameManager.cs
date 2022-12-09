@@ -47,6 +47,6 @@ public class GameManager : MonoSingleton<GameManager>
     //Test code
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) SoundManager.PlayOnShot(Define.SoundType.EFFECT, "Click");
+        // if (Input.GetMouseButtonDown(0)) SoundManager.PlayOnShot(Define.SoundType.EFFECT, "Click");
     }
 }

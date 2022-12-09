@@ -17,10 +17,7 @@ public abstract class PlayerMode_Base : MonoBehaviour
 
     protected LayerMask _groundLayerMask;
 
-
-    private void Start() => Init();
-
-    void Init()
+    public void Init()
     {
         _playerController = FindObjectOfType<PlayerController>();
         _playerTs = _playerController.transform;
@@ -30,10 +27,7 @@ public abstract class PlayerMode_Base : MonoBehaviour
         _rigidbody = _playerController.Rigidbody;
 
         _groundLayerMask = LayerMask.GetMask("Ground");
-
-        UseInit();
     }
-
 
     /// <summary>
     /// 사용 될 때마다 초기 셋팅
