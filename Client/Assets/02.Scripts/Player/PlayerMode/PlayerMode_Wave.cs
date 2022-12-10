@@ -18,6 +18,12 @@ public class PlayerMode_Wave : PlayerMode_Base
         _customGravity.SetGravity(false);
         Jump();
     }
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+
+        SetDir();
+    }
 
     public override void Move()
     {
@@ -33,6 +39,17 @@ public class PlayerMode_Wave : PlayerMode_Base
             yield return new WaitForFixedUpdate();
         }
     }
+
+    public void SetDir()
+    {
+        float distance = _upDir.magnitude + 0.1f;
+        Ray ray = new Ray(_playerTs.position, _upDir);
+        if (Physics.Raycast(ray, distance, _groundLayerMask))
+        {
+            _upDir = _playerController.Dir;
+        }
+    }
+
     public override void Jump()
     {
         _rigidbody.velocity = Vector3.zero;
