@@ -7,7 +7,10 @@ using Define;
 public class StageSO : ScriptableObject
 {
     public int _stageIndex;
-    public string _stageName;
+    public string _stageTitle;
+    public Sprite _stageSprite;
+    public string _stageProducer;
+
     public PlayerModeType _stageMode;
 
     public bool _isMain;
