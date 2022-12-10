@@ -14,7 +14,7 @@ public class SpeedManager : MonoBehaviour
 
     private void Start()
     {
-        SetSpeed();
+        SetSpeed(_speed);
     }
 
     // To do : 속도 변경 오브젝트와 닿으면 속도 변경 그 외는 아직 고민

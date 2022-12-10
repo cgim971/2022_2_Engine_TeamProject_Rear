@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Trigger_Portal_ChangeSpeed : Trigger_Portal_Base
 {
+    [SerializeField] private float _speed = 1f;
     public override void Trigger()
     {
-        throw new System.NotImplementedException();
+        _playerController.SpeedManager.SetSpeed(_speed);
     }
-
+    public override void OffTrigger() { }
 }

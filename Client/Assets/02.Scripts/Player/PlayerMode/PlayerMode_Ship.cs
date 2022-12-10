@@ -11,6 +11,7 @@ public class PlayerMode_Ship : PlayerMode_Base
     public override IEnumerator InputTouch()
     {
         _upDir = _playerController.Dir;
+        Debug.Log(_upDir);
         while (true)
         {
             yield return new WaitUntil(() => Input.GetMouseButton(0));

@@ -52,7 +52,7 @@ namespace Define
         }
         public static DirType GetReverseGravityType(DirType gravityType)
         {
-            switch(gravityType)
+            switch (gravityType)
             {
                 case DirType.UP: return DirType.DOWN;
                 case DirType.DOWN: return DirType.UP;
@@ -98,6 +98,14 @@ namespace Define
     public static class Player
     {
 
+    }
+
+    public static class Math
+    {
+        public static Vector3 VectorAbs(Vector3 value)
+        {
+            return new Vector3(Mathf.Abs(value.x), Mathf.Abs(value.y), Mathf.Abs(value.z));
+        }
     }
 }
 

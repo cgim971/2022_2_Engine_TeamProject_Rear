@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trigger_JumpStool : MonoBehaviour
+public class Trigger_JumpStool : Trigger_Base
 {
-    // Start is called before the first frame update
-    void Start()
+    // ´êÀ¸¸é Á¡ÇÁ‰Î
+    public override void Trigger()
     {
-        
+        _playerController.Jump();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public override void OffTrigger() { }
+
 }

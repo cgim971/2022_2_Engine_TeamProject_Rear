@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Trigger_Portal_Teleport : Trigger_Portal_Base
 {
+    [SerializeField] private Transform _teleportTs;
     public override void Trigger()
     {
-        throw new System.NotImplementedException();
+        _playerController.transform.position = _teleportTs.position;
     }
+    public override void OffTrigger() { }
 
 }

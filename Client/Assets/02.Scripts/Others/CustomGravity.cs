@@ -43,7 +43,6 @@ public class CustomGravity : MonoBehaviour
     public Vector3 SetGravity(DirType gravityType)
     {
         _gravityDir = GetGravity(gravityType);
-
         return _gravityDir;
     }
 

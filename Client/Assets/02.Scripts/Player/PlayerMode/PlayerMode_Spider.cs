@@ -21,6 +21,11 @@ public class PlayerMode_Spider : PlayerMode_Base
         {
             Jump();
         }
+        else if (_isExtraJump)
+        {
+            _isExtraJump = false;
+            Jump();
+        }
 
     }
 
@@ -34,7 +39,7 @@ public class PlayerMode_Spider : PlayerMode_Base
 
     public void Teleport()
     {
-        _playerTs.position = _oppositeGroundPosition - (_playerController.Gravity * -1);
+        _playerTs.position = _oppositeGroundPosition - (_playerController.Gravity * -1 * _sizeManager.Size.x);
         _playerController.ReverseGravity();
     }
 

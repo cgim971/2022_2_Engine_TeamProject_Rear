@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Define;
 
-public class Trigger_Portal_ChangeDirection : Trigger_Portal_Base
+public class Trigger_Obstacle : Trigger_Base
 {
-    [SerializeField] private DirType _dirType;
-
+    // 충돌 되면 죽음
     public override void Trigger()
     {
-        _playerController.SetDir(_dirType);
+        TriggerManager.Instance.OnDeath();
     }
     public override void OffTrigger() { }
 }

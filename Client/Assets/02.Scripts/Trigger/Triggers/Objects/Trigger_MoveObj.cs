@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class Trigger_MoveObj : MonoBehaviour
+public class Trigger_MoveObj : Trigger_Base
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<ObjectValue> _moveValue;
 
-    // Update is called once per frame
-    void Update()
+    public void Start() => StartCoroutine(ObjectMove());
+
+    public IEnumerator ObjectMove()
     {
-        
+        foreach (ObjectValue value in _moveValue)
+        {
+            yield return new WaitForSeconds(value._delay);
+            Tween tween = transform.DOMove(value._value, value._duration);
+            yield return tween.WaitForCompletion();
+        }
     }
+    public override void Trigger() { }
+
+    public override void OffTrigger() { }
 }

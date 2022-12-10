@@ -8,19 +8,23 @@ using static Define.Gravity;
 
 public class PlayerController : MonoBehaviour
 {
-    #region Property
+    #region Public Property
     public CustomGravity CustomGravity => _customGravity;
     public SpeedManager SpeedManager => _speedManager;
+    public SizeManager SizeManager => _sizeManager;
     public Rigidbody Rigidbody => _rigidbody;
 
     public PlayerModeType CurrentPlayerMode => _currentPlayerMode;
 
     public Vector3 Dir => _dir;
     public Vector3 Gravity => _gravity;
+
+    public Transform FollowTs => _followTs;
     #endregion
 
     private CustomGravity _customGravity = null;
     private SpeedManager _speedManager = null;
+    private SizeManager _sizeManager = null;
     private Rigidbody _rigidbody = null;
 
     // 현재 플레이어 모드
@@ -37,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     // 플레이어 방향에 맞게 회전 할 트랜스폼
     private Transform _rotateTs = null;
+    // 플레이어를 따라가는 카메라의 
+    private Transform _followTs = null;
 
     private void Awake() => Init();
 
@@ -44,9 +50,11 @@ public class PlayerController : MonoBehaviour
     {
         _customGravity = GetComponent<CustomGravity>();
         _speedManager = GetComponent<SpeedManager>();
+        _sizeManager = GetComponent<SizeManager>();
         _rigidbody = GetComponent<Rigidbody>();
 
         _rotateTs = transform.Find("RotateObj");
+        _followTs = transform.Find("FollowObj");
 
         InitPlayerMode();
 
@@ -54,6 +62,10 @@ public class PlayerController : MonoBehaviour
         SetDir(_dirType);
     }
 
+    private void Start()
+    {
+        SetPlayerMode(_currentPlayerMode);
+    }
 
     #region Player Method
     private void InitPlayerMode()
@@ -64,8 +76,6 @@ public class PlayerController : MonoBehaviour
         _playerModeTypeDictionary.Add(PlayerModeType.ROBOT, new PlayerMode(_rotateTs.Find("Robot")));
         _playerModeTypeDictionary.Add(PlayerModeType.WAVE, new PlayerMode(_rotateTs.Find("Wave")));
         _playerModeTypeDictionary.Add(PlayerModeType.SPIDER, new PlayerMode(_rotateTs.Find("Spider")));
-
-        SetPlayerMode(_currentPlayerMode);
     }
 
     public void SetPlayerMode(PlayerModeType playerModeType)
@@ -81,6 +91,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Trigger Method
     #region Gravity Method
     public void SetGravity(DirType gravityType)
     {
@@ -110,6 +121,35 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Jump Method
+    public void Jump()
+    {
+        if (_playerModeTypeDictionary.TryGetValue(_currentPlayerMode, out PlayerMode playerMode))
+        {
+            playerMode._playerMode.Jump();
+        }
+    }
+    // 여러 번 점프 코드 작성해야함
+    public void ExtraJump(bool isExtraJump = true)
+    {
+        if (_playerModeTypeDictionary.TryGetValue(_currentPlayerMode, out PlayerMode playerMode))
+        {
+            playerMode._playerMode.SetIsExtraJump(isExtraJump);
+        }
+    }
+    #endregion
+
+    #region Camera Method
+    public void SetCameraPos(Vector3 pos)
+    {
+        _followTs.DOLocalMove(pos, 0.1f);
+    }
+    public void SetCameraRot(Quaternion rot)
+    {
+        _followTs.DORotateQuaternion(rot, 0.1f);
+    }
+    #endregion
+    #endregion
 
     #region 회전하기.. 가는 방향으로
     [ContextMenu("asdf")]
@@ -126,11 +166,6 @@ public class PlayerController : MonoBehaviour
         // Test code
         //if (Input.GetKeyDown(KeyCode.Space)) RotateObj();
         //if (Input.GetKeyDown(KeyCode.Space)) SetPlayerMode(PlayerModeType.SHIP);
-    }
-
-    private Vector3 VectorAbs(Vector3 value)
-    {
-        return new Vector3(Mathf.Abs(value.x), Mathf.Abs(value.y), Mathf.Abs(value.z));
     }
 
     // 중력과 방향을 이용하여 바라보는 오브젝트를 회전
@@ -182,7 +217,6 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector3 cross = Vector3.Cross(_gravity, _dir);
-        Debug.Log(cross);
         _rotateTs.transform.forward = cross;
 
 
@@ -355,7 +389,6 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
-
 }
 
 public class PlayerMode

@@ -20,9 +20,11 @@ public class PlayerMode_Cube : PlayerMode_Base
             return;
         }
         // 추가로 점프가 가능한지
-        //else if ()
+        else if (_isExtraJump == true)
         {
-
+            _isExtraJump = false;
+            Jump();
+            return;
         }
     }
 

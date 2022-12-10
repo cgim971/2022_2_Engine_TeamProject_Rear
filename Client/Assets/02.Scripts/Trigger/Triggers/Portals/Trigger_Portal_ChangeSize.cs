@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Trigger_Portal_ChangeSize : Trigger_Portal_Base
 {
+    [SerializeField] private Vector3 _size = Vector3.one;
     public override void Trigger()
     {
-        throw new System.NotImplementedException();
+        _playerController.SizeManager.SetSize(_size);
     }
-
+    public override void OffTrigger() { }
 }
