@@ -13,6 +13,7 @@ namespace Define
         WAVE,
         ROBOT,
         SPIDER,
+        BALL,
         END
     }
 

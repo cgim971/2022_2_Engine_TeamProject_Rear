@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerMode_Cube : PlayerMode_Base
 {
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        CheckObstacle();
+    }
     public override void Move() => _rigidbody.MovePosition(_playerTs.position +  _playerController.Dir* _speed * _speedManager.Speed * Time.deltaTime);
 
     public override void Animation()

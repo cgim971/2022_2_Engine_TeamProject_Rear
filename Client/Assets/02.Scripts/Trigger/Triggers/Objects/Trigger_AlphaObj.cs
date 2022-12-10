@@ -16,15 +16,12 @@ public class Trigger_AlphaObj : Trigger_Base
         {
             degree += Time.deltaTime;
             float alpha = Mathf.Sin(degree) / 2 + 0.5f;
-            if (_material.IsKeywordEnabled("_Alpha"))
-            {
-                _material.SetFloat("_Alpha", alpha);
-            }
+            _material.SetFloat("_Alpha", alpha);
 
             yield return null;
         }
     }
 
-    public override void Trigger(){}
+    public override void Trigger() { }
     public override void OffTrigger() { }
 }

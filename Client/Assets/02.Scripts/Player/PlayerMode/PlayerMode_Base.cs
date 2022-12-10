@@ -19,6 +19,7 @@ public abstract class PlayerMode_Base : MonoBehaviour
 
     protected LayerMask _groundLayerMask;
     protected bool _isExtraJump = false;
+    protected bool _isGravity = false;
 
     public void Init()
     {
@@ -66,7 +67,7 @@ public abstract class PlayerMode_Base : MonoBehaviour
     public virtual void FixedUpdate()
     {
         Move();
-        CheckObstacle();
+        CheckObstacleDir();
     }
     /// <summary>
     /// 그라운드와 닿았는지 체크
@@ -87,7 +88,7 @@ public abstract class PlayerMode_Base : MonoBehaviour
     /// <summary>
     /// 앞에 오브젝트가 있다면
     /// </summary>
-    public void CheckObstacle()
+    public void CheckObstacleDir()
     {
         float distance = (VectorAbs(_playerController.Dir) * _sizeManager.Size.x).magnitude / 2 + 0.1f;
         Ray ray = new Ray(_playerTs.position, _playerController.Dir);
@@ -96,6 +97,26 @@ public abstract class PlayerMode_Base : MonoBehaviour
             TriggerManager.Instance.OnDeath();
             return;
         }
+    }
+
+    /// <summary>
+    /// 중력의 반대방향과 닿으면
+    /// </summary>
+    public void CheckObstacle()
+    {
+        if (_isGravity) return;
+        float distance = (VectorAbs(_playerController.Gravity) * _sizeManager.Size.x).magnitude / 2 + 0.1f;
+        Ray ray = new Ray(_playerTs.position, _playerController.Gravity * -1);
+        if (Physics.Raycast(ray, distance, _groundLayerMask))
+        {
+            TriggerManager.Instance.OnDeath();
+            return;
+        }
+    }
+
+    public void SetIsGravity(bool isGravity = false)
+    {
+        _isGravity = isGravity;
     }
 
     public abstract void Move();

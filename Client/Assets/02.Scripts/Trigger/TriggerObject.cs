@@ -62,6 +62,9 @@ public class TriggerObject : MonoBehaviour
 
     [ContextMenu("Portal_Teleport")]
     public void AddTeleport() => _triggerList.Add(gameObject.AddComponent<Trigger_Portal_Teleport>());
+
+    [ContextMenu("Portal_ChangeMode")]
+    public void AddChangeMode() => _triggerList.Add(gameObject.AddComponent<Trigger_Portal_ChangeMode>());
     #endregion
     #endregion
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMode_Ship : PlayerMode_Base
 {
     private Vector3 _upDir;
- 
+    
     public override void Move() => _rigidbody.MovePosition(_playerTs.position + _upDir * _speed * _speedManager.Speed * Time.deltaTime);
 
     public override IEnumerator InputTouch()

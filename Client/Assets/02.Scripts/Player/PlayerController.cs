@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
         _playerModeTypeDictionary.Add(PlayerModeType.ROBOT, new PlayerMode(_rotateTs.Find("Robot")));
         _playerModeTypeDictionary.Add(PlayerModeType.WAVE, new PlayerMode(_rotateTs.Find("Wave")));
         _playerModeTypeDictionary.Add(PlayerModeType.SPIDER, new PlayerMode(_rotateTs.Find("Spider")));
+        _playerModeTypeDictionary.Add(PlayerModeType.BALL, new PlayerMode(_rotateTs.Find("Ball")));
     }
 
     public void SetPlayerMode(PlayerModeType playerModeType)
@@ -96,13 +97,25 @@ public class PlayerController : MonoBehaviour
     public void SetGravity(DirType gravityType)
     {
         _gravityType = gravityType;
-        _gravity = _customGravity.SetGravity(_gravityType);
+        StartCoroutine(GravityChange());
     }
 
     public void ReverseGravity()
     {
         _gravityType = GetReverseGravityType(_gravityType);
+        StartCoroutine(GravityChange());
+    }
+    IEnumerator GravityChange()
+    {
+        yield return null;
+        if (_playerModeTypeDictionary.TryGetValue(_currentPlayerMode, out PlayerMode playerMode))
+        {
+            playerMode._playerMode.SetIsGravity(true);
+        }
+
         _gravity = _customGravity.SetGravity(_gravityType);
+        yield return new WaitForSeconds(0.2f);
+        playerMode._playerMode.SetIsGravity();
     }
     #endregion
 
@@ -129,7 +142,6 @@ public class PlayerController : MonoBehaviour
             playerMode._playerMode.Jump();
         }
     }
-    // 여러 번 점프 코드 작성해야함
     public void ExtraJump(bool isExtraJump = true)
     {
         if (_playerModeTypeDictionary.TryGetValue(_currentPlayerMode, out PlayerMode playerMode))
