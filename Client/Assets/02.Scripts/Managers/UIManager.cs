@@ -22,4 +22,25 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _loadingText;
     public TextMeshProUGUI LoadingText => _loadingText;
+
+    public void OnCanvasGroup(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = 1.0f;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
+    }
+
+    public void InitCanvasGroup(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = 0.0f;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
+    }
+
+    public void OffCanvasGroup(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = 0.0f;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
+    }
 }

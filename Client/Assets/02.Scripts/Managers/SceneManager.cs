@@ -34,7 +34,6 @@ public class SceneManager : MonoBehaviour
 
     public void StageScene(StageSO stageSO)
     {
-        GameManager.Instance.CurrentStageSO = stageSO;
         LoadingScene($"Stage_{stageSO._stageIndex}");
     }
     public void Stage(string sceneName)
