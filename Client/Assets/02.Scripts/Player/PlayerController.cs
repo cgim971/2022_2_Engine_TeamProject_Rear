@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Test code
-        //if (Input.GetKeyDown(KeyCode.Space)) RotateObj();
+        if (Input.GetKeyDown(KeyCode.Space)) RotateObj();
         //if (Input.GetKeyDown(KeyCode.Space)) SetPlayerMode(PlayerModeType.SHIP);
     }
 
@@ -186,218 +186,216 @@ public class PlayerController : MonoBehaviour
         _dir = GetDirection(_dirType);
         _gravity = _customGravity.SetGravity(_gravityType);
 
-        //_rotateTs.transform.localRotation = Quaternion.identity;
-
-        // 0 -1 1  0   0   0
-        // 0 1 1   0   180 0
-        // 1 0 1   0   0   90
-        // 1 0 -1  180 0   90
-        // 1 -1 0  0   90  0    
-        // 0 1 0 -1 0 0
-
         {
-            // 중력             방향           원하는 결과
-            //down(0,-1,0)      앞 (0,0,1)   (0,0,0)
-            //down(0,-1,0)      뒤 (0,0,-1)  (0,180,0)
-            //down(0,-1,0)      왼 (-1,0,0)  (0,-90,0)
-            //down(0,-1,0)      오 (1,0,0)   (0,90,0)
+            //_rotateTs.transform.up = _gravity * -1;
+            //_rotateTs.rotation = Quaternion.AngleAxis((90f * _dir.x)+(-90f * (_dir.z - 1) ), _gravity);
+            //_rotateTs.Rotate(_dir, 0, Space.Self);
 
-            // up(0,1,0)        앞 (0,0,1)  (0,0,180)
-            // up(0,1,0)        뒤 (0,0,-1)  (0,180,180)
-            // up(0,1,0)        왼 (-1,0,0)  (0,90,180)
-            // up(0,1,0)        오 (1,0,0)  (0,-90,180)
 
-            //left(-1,0,0)      앞 (0,0,1)  (0,0,-90)
-            //left(-1,0,0)      뒤 (0,0,-1) (180,0,-90)
-            //left(-1,0,0)      위 (0,1,0)  (-90,0,-90)
-            //left(-1,0,0)      아래 (0,-1,0) (90,0,-90)
+            // 0 -1 1  0   0   0
+            // 0 1 1   0   180 0
+            // 1 0 1   0   0   90
+            // 1 0 -1  180 0   90
+            // 1 -1 0  0   90  0    
+            // 0 1 0 -1 0 0
 
-            //right(1,0,0)      앞 (0,0,1)  (0,0,90)
-            //right(1,0,0)      뒤 (0,0,-1)  (180,0,90)
-            //right(1,0,0)      위 (0,1,0)  (-90,0,90)
-            //right(1,0,0)      아래 (0,-1,0)  (90,0,90)
+            {
+                // 중력             방향           원하는 결과
+                //down(0,-1,0)      앞 (0,0,1)   (0,0,0)
+                //down(0,-1,0)      뒤 (0,0,-1)  (0,180,0)
+                //down(0,-1,0)      왼 (-1,0,0)  (0,-90,0)
+                //down(0,-1,0)      오 (1,0,0)   (0,90,0)
 
-            //forward(0,0,1)    위 (0,0,1)  (-90,0,0)
-            //forward(0,0,1)    아래 (0,0,-1) (90,-90,90)
-            //forward(0,0,1)    왼 (-1,0,0)  (0,-90,90)
-            //forward(0,0,1)    오 (1,0,0) (180,-90,90)
+                // up(0,1,0)        앞 (0,0,1)  (0,0,180)
+                // up(0,1,0)        뒤 (0,0,-1)  (0,180,180)
+                // up(0,1,0)        왼 (-1,0,0)  (0,90,180)
+                // up(0,1,0)        오 (1,0,0)  (0,-90,180)
 
-            //backward(0,0,-1)  위 (0,1,0)  (-90,90,90)
-            //backward(0,0,-1)  아래 (0,-1,0) (90,0,0)
-            //backward(0,0,-1)  왼 (-1,0,0)  (180,90,90)
-            //backward(0,0,-1)  오 (1,0,0)  (0,90,90)
+                //left(-1,0,0)      앞 (0,0,1)  (0,0,-90)
+                //left(-1,0,0)      뒤 (0,0,-1) (180,0,-90)
+                //left(-1,0,0)      위 (0,1,0)  (-90,0,-90)
+                //left(-1,0,0)      아래 (0,-1,0) (90,0,-90)
+
+                //right(1,0,0)      앞 (0,0,1)  (0,0,90)
+                //right(1,0,0)      뒤 (0,0,-1)  (180,0,90)
+                //right(1,0,0)      위 (0,1,0)  (-90,0,90)
+                //right(1,0,0)      아래 (0,-1,0)  (90,0,90)
+
+                //forward(0,0,1)    위 (0,0,1)  (-90,0,0)
+                //forward(0,0,1)    아래 (0,0,-1) (90,-90,90)
+                //forward(0,0,1)    왼 (-1,0,0)  (0,-90,90)
+                //forward(0,0,1)    오 (1,0,0) (180,-90,90)
+
+                //backward(0,0,-1)  위 (0,1,0)  (-90,90,90)
+                //backward(0,0,-1)  아래 (0,-1,0) (90,0,0)
+                //backward(0,0,-1)  왼 (-1,0,0)  (180,90,90)
+                //backward(0,0,-1)  오 (1,0,0)  (0,90,90)
+            }
+
+            //Vector3 cross = Vector3.Cross(_gravity, _dir);
+            //_rotateTs.transform.forward = cross;
+
+
+            //_rotateTs.transform.forward = _dir;
+
+            //_rotateTs.transform.localRotation = Quaternion.LookRotation(_dir);
+
+            //if(_dir == Vector3.up)
+            //{
+            //    _rotateTs.transform.rotation = Quaternion.Euler(-90f, 0f, 90f);
+            //}
+            //else if(_dir == Vector3.down)
+            //{
+            //    _rotateTs.transform.rotation = Quaternion.Euler(90f, 0f, 90f);
+            //}
+            //if(_gravity == Vector3.forward)
+            //{
+            //    _gravity *= -1f;
+            //}
+            //if (Vector3.Max(_gravity, Vector3.zero) == Vector3.zero)
+            //{
+            //    Quaternion rotate = Quaternion.AngleAxis(180f + (_gravity.x * 90f + 180f), _dir);
+            //    //Vector3 euler = rotate.eulerAngles;
+            //    //euler.z -= _gravity.z * 90f;
+
+            //    _rotateTs.transform.Rotate(rotate.eulerAngles);
+            //    //_rotateTs.transform.Rotate(euler);
+            //}
+            //else
+            //{
+            //    Quaternion rotate = Quaternion.AngleAxis(0f + (-_gravity.x * 90f + 180f), _dir);
+            //    //Vector3 euler = rotate.eulerAngles;
+            //    //euler.z = _gravity.z * 90f;
+
+            //    _rotateTs.transform.Rotate(rotate.eulerAngles);
+            //    //_rotateTs.transform.Rotate(euler);
+
+            //}
+
+
+            //Debug.Log(_dir + " " + _rotateTs.transform.forward);
+
         }
 
-        Vector3 cross = Vector3.Cross(_gravity, _dir);
-        _rotateTs.transform.forward = cross;
-
-
-        //_rotateTs.transform.forward = _dir;
-
-        //_rotateTs.transform.localRotation = Quaternion.LookRotation(_dir);
-        //_rotateChild.transform.localRotation = Quaternion.LookRotation(_gravity);
-
-        //_rotateChild.transform.up = -_gravity;
-        //_rotateTs.transform.localRotation = Quaternion.LookRotation(_dir);
-
-        //if(_dir == Vector3.up)
-        //{
-        //    _rotateTs.transform.rotation = Quaternion.Euler(-90f, 0f, 90f);
-        //}
-        //else if(_dir == Vector3.down)
-        //{
-        //    _rotateTs.transform.rotation = Quaternion.Euler(90f, 0f, 90f);
-        //}
-        //if(_gravity == Vector3.forward)
-        //{
-        //    _gravity *= -1f;
-        //}
-        //if (Vector3.Max(_gravity, Vector3.zero) == Vector3.zero)
-        //{
-        //    Quaternion rotate = Quaternion.AngleAxis(180f + (_gravity.x * 90f + 180f), _dir);
-        //    //Vector3 euler = rotate.eulerAngles;
-        //    //euler.z -= _gravity.z * 90f;
-
-        //    _rotateTs.transform.Rotate(rotate.eulerAngles);
-        //    //_rotateTs.transform.Rotate(euler);
-        //}
-        //else
-        //{
-        //    Quaternion rotate = Quaternion.AngleAxis(0f + (-_gravity.x * 90f + 180f), _dir);
-        //    //Vector3 euler = rotate.eulerAngles;
-        //    //euler.z = _gravity.z * 90f;
-
-        //    _rotateTs.transform.Rotate(rotate.eulerAngles);
-        //    //_rotateTs.transform.Rotate(euler);
-
-        //}
-
-
-        //Debug.Log(_dir + " " + _rotateTs.transform.forward);
-
-
-        //Quaternion rotate = Quaternion.identity;
-
-
         {
-            //if (_gravityType == DirType.DOWN)
-            //{
-            //    if (_dirType == DirType.FORWARD)
-            //    {
-            //        rotate = Quaternion.identity;
-            //    }
-            //    else if (_dirType == DirType.BACKWARD)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.up * 180);
-            //    }
-            //    else if (_dirType == DirType.LEFT)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.up * -90);
-            //    }
-            //    else if (_dirType == DirType.RIGHT)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.up * 90);
-            //    }
-            //}
-            //else if (_gravityType == DirType.UP)
-            //{
-            //    // Vector3.forward == 0, 0, 1
-            //    if (_dirType == DirType.FORWARD)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.forward * 180);
-            //    }
-            //    else if (_dirType == DirType.BACKWARD)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.up * 180 + Vector3.forward * 180);
-            //    }
-            //    else if (_dirType == DirType.LEFT)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.up * -90 + Vector3.forward * 180);
-            //    }
-            //    else if (_dirType == DirType.RIGHT)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.up * 90 + Vector3.forward * 180);
-            //    }
-            //}
-            //else if (_gravityType == DirType.LEFT)
-            //{
-            //    if (_dirType == DirType.FORWARD)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.forward * -90);
-            //    }
-            //    else if (_dirType == DirType.BACKWARD)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.right * 180 + Vector3.forward * -90);
-            //    }
-            //    else if (_dirType == DirType.UP)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.right * -90 + Vector3.forward * -90);
-            //    }
-            //    else if (_dirType == DirType.DOWN)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.right * 90 + Vector3.forward * -90);
-            //    }
-            //}
-            //else if (_gravityType == DirType.RIGHT)
-            //{
-            //    if (_dirType == DirType.FORWARD)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.forward * 90);
-            //    }
-            //    else if (_dirType == DirType.BACKWARD)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.right * 180 + Vector3.forward * 90);
-            //    }
-            //    else if (_dirType == DirType.UP)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.right * -90 + Vector3.forward * 90);
-            //    }
-            //    else if (_dirType == DirType.DOWN)
-            //    {
-            //        rotate = Quaternion.Euler(Vector3.right * 90 + Vector3.forward * 90);
-            //    }
-            //}
-            //else if (_gravityType == DirType.FORWARD)
-            //{
-            //    if (_dirType == DirType.UP)
-            //    {
-            //        rotate = Quaternion.Euler(new Vector3(-90, -90, 90));
-            //    }
-            //    else if (_dirType == DirType.DOWN)
-            //    {
-            //        rotate = Quaternion.Euler(new Vector3(90, -90, 90));
-            //    }
-            //    else if (_dirType == DirType.LEFT)
-            //    {
-            //        rotate = Quaternion.Euler(new Vector3(-180, 90, -90));
-            //    }
-            //    else if (_dirType == DirType.RIGHT)
-            //    {
-            //        rotate = Quaternion.Euler(new Vector3(-180, -90, 90));
-            //    }
-            //}
-            //else if (_gravityType == DirType.BACKWARD)
-            //{
-            //    if (_dirType == DirType.UP)
-            //    {
-            //        rotate = Quaternion.Euler(new Vector3(-90, -180, 0));
-            //    }
-            //    else if (_dirType == DirType.DOWN)
-            //    {
-            //        rotate = Quaternion.Euler(new Vector3(90, -270, 90));
-            //    }
-            //    else if (_dirType == DirType.LEFT)
-            //    {
-            //        rotate = Quaternion.Euler(new Vector3(180, -270, 90));
-            //    }
-            //    else if (_dirType == DirType.RIGHT)
-            //    {
-            //        rotate = Quaternion.Euler(new Vector3(360, -270, 90));
-            //    }
-            //}
+            Quaternion rotate = Quaternion.identity;
 
-            //Debug.Log(rotate.eulerAngles);
-            //_rotateTs.DORotateQuaternion(rotate, 0.2f);
+            if (_gravityType == DirType.DOWN)
+            {
+                if (_dirType == DirType.FORWARD)
+                {
+                    rotate = Quaternion.identity;
+                }
+                else if (_dirType == DirType.BACKWARD)
+                {
+                    rotate = Quaternion.Euler(Vector3.up * 180);
+                }
+                else if (_dirType == DirType.LEFT)
+                {
+                    rotate = Quaternion.Euler(Vector3.up * -90);
+                }
+                else if (_dirType == DirType.RIGHT)
+                {
+                    rotate = Quaternion.Euler(Vector3.up * 90);
+                }
+            }
+            else if (_gravityType == DirType.UP)
+            {
+                if (_dirType == DirType.FORWARD)
+                {
+                    rotate = Quaternion.Euler(Vector3.forward * 180);
+                }
+                else if (_dirType == DirType.BACKWARD)
+                {
+                    rotate = Quaternion.Euler(Vector3.up * 180 + Vector3.forward * 180);
+                }
+                else if (_dirType == DirType.LEFT)
+                {
+                    rotate = Quaternion.Euler(Vector3.up * -90 + Vector3.forward * 180);
+                }
+                else if (_dirType == DirType.RIGHT)
+                {
+                    rotate = Quaternion.Euler(Vector3.up * 90 + Vector3.forward * 180);
+                }
+            }
+            else if (_gravityType == DirType.LEFT)
+            {
+                if (_dirType == DirType.FORWARD)
+                {
+                    rotate = Quaternion.Euler(Vector3.forward * -90);
+                }
+                else if (_dirType == DirType.BACKWARD)
+                {
+                    rotate = Quaternion.Euler(Vector3.right * 180 + Vector3.forward * -90);
+                }
+                else if (_dirType == DirType.UP)
+                {
+                    rotate = Quaternion.Euler(Vector3.right * -90 + Vector3.forward * -90);
+                }
+                else if (_dirType == DirType.DOWN)
+                {
+                    rotate = Quaternion.Euler(Vector3.right * 90 + Vector3.forward * -90);
+                }
+            }
+            else if (_gravityType == DirType.RIGHT)
+            {
+                if (_dirType == DirType.FORWARD)
+                {
+                    rotate = Quaternion.Euler(Vector3.forward * 90);
+                }
+                else if (_dirType == DirType.BACKWARD)
+                {
+                    rotate = Quaternion.Euler(Vector3.right * 180 + Vector3.forward * 90);
+                }
+                else if (_dirType == DirType.UP)
+                {
+                    rotate = Quaternion.Euler(Vector3.right * -90 + Vector3.forward * 90);
+                }
+                else if (_dirType == DirType.DOWN)
+                {
+                    rotate = Quaternion.Euler(Vector3.right * 90 + Vector3.forward * 90);
+                }
+            }
+            else if (_gravityType == DirType.FORWARD)
+            {
+                if (_dirType == DirType.UP)
+                {
+                    rotate = Quaternion.Euler(new Vector3(-90, -90, 90));
+                }
+                else if (_dirType == DirType.DOWN)
+                {
+                    rotate = Quaternion.Euler(new Vector3(90, -90, 90));
+                }
+                else if (_dirType == DirType.LEFT)
+                {
+                    rotate = Quaternion.Euler(new Vector3(-180, 90, -90));
+                }
+                else if (_dirType == DirType.RIGHT)
+                {
+                    rotate = Quaternion.Euler(new Vector3(-180, -90, 90));
+                }
+            }
+            else if (_gravityType == DirType.BACKWARD)
+            {
+                if (_dirType == DirType.UP)
+                {
+                    rotate = Quaternion.Euler(new Vector3(-90, -180, 0));
+                }
+                else if (_dirType == DirType.DOWN)
+                {
+                    rotate = Quaternion.Euler(new Vector3(90, -270, 90));
+                }
+                else if (_dirType == DirType.LEFT)
+                {
+                    rotate = Quaternion.Euler(new Vector3(180, -270, 90));
+                }
+                else if (_dirType == DirType.RIGHT)
+                {
+                    rotate = Quaternion.Euler(new Vector3(360, -270, 90));
+                }
+            }
+
+            _rotateTs.DORotateQuaternion(rotate, 0.2f);
         }
     }
     #endregion

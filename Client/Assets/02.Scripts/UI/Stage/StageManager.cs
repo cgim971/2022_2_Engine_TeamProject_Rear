@@ -13,6 +13,7 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private float[] _stageOffset;
     private float _distance, _targetPos, _curPos;
     private bool _isDrag;
+    private Vector2 _pos;
 
     [SerializeField] private GameObject _stagePanel;
     [SerializeField] private RectTransform _content;
@@ -20,7 +21,6 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     Dictionary<float, StageInfo> _stageInfoDictionary = new Dictionary<float, StageInfo>();
     private ScrollRect _scrollRect;
     [SerializeField] private Scrollbar _horizontalScrollbar;
-
     private void Start()
     {
         _scrollRect = GetComponent<ScrollRect>();
@@ -69,16 +69,18 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnBeginDrag(PointerEventData eventData)
     {
         _curPos = SetPos();
+        _pos = eventData.position;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         _isDrag = true;
-        if (eventData.delta.x > 30 && _targetIndex != 0)
+        Debug.Log(eventData.delta.x);
+        if (eventData.delta.x > 3 && _targetIndex != 0)
         {
             _currentStageInfo.OffPanel();
         }
-        else if (eventData.delta.x < -30 && _targetIndex != _stageCount)
+        else if (eventData.delta.x < -3 && _targetIndex != _stageCount)
         {
             _currentStageInfo.OffPanel();
         }
