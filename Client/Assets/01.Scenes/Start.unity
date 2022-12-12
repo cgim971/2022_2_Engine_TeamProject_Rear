@@ -3683,6 +3683,7 @@ GameObject:
   - component: {fileID: 1054031573}
   - component: {fileID: 1054031572}
   - component: {fileID: 1054031571}
+  - component: {fileID: 1054031574}
   m_Layer: 5
   m_Name: StageScroll View
   m_TagString: Untagged
@@ -3740,19 +3741,7 @@ MonoBehaviour:
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1702137656}
-        m_TargetAssemblyTypeName: MainUIManager, Assembly-CSharp
-        m_MethodName: OnScroll
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1054031572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3791,6 +3780,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054031569}
   m_CullTransparentMesh: 1
+--- !u!114 &1054031574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054031569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58e91215c88ab64eab5c9458a4142d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stagePanel: {fileID: 3491898563338774690, guid: b0957e8263028e84a8cf02f8a2925c4c, type: 3}
+  _content: {fileID: 1911319800}
+  _horizontalScrollbar: {fileID: 2024187950}
 --- !u!1 &1098650820
 GameObject:
   m_ObjectHideFlags: 0
@@ -5338,9 +5342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffd51bffbc82f348ab993a74f2d3b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stagePanel: {fileID: 3491898563338774690, guid: b0957e8263028e84a8cf02f8a2925c4c, type: 3}
-  _content: {fileID: 1911319800}
-  _horizontalSlider: {fileID: 2024187950}
 --- !u!1 &1713639968
 GameObject:
   m_ObjectHideFlags: 0

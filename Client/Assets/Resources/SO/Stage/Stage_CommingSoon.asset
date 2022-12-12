@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Stage_CommingSoon
   m_EditorClassIdentifier: 
   _stageIndex: 0
-  _stageName: :( comming soon..
+  _stageTitle: To be Continued
+  _stageSprite: {fileID: 0}
+  _stageProducer: 
   _stageMode: 0
   _isMain: 0
   _isComming: 1
