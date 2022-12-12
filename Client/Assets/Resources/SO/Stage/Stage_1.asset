@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Stage_1
   m_EditorClassIdentifier: 
   _stageIndex: 1
-  _stageName: Kiki
-  _stageMode: 3
+  _stageTitle: C
+  _stageSprite: {fileID: 0}
+  _stageProducer: 
+  _stageMode: 1
   _isMain: 0
   _isComming: 0

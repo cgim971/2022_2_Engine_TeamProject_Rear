@@ -18,6 +18,9 @@ public class StartUIManager : MonoBehaviour
     {
         _uiManager = GameManager.Instance.uiManager;
         _fadeImage = _uiManager.FadeImage;
+
+        _uiManager.OffCanvasGroup(_inventoryCanvasGroup);
+        _uiManager.OffCanvasGroup(_settingCanvasGroup);
     }
 
     public void OnInventory()

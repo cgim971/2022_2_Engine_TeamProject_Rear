@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Stage_Main
   m_EditorClassIdentifier: 
   _stageIndex: 0
-  _stageName: :(
-  _stageMode: 1
+  _stageTitle: I have no idea
+  _stageSprite: {fileID: 21300000, guid: a6e7f9dd6831bc842b151f9953783e76, type: 3}
+  _stageProducer: Chanhee
+  _stageMode: 0
   _isMain: 1
   _isComming: 0

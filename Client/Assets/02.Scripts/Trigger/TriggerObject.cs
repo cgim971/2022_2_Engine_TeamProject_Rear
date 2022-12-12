@@ -8,7 +8,6 @@ public class TriggerObject : MonoBehaviour
     private PlayerController _playerController;
     protected Collider _collider;
 
-
     private void Awake() => Init();
     void Init()
     {
