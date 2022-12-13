@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e3ce2f6adba5cf45b102a3abbc37ef2, type: 3}
   m_Name: UFO_3
   m_EditorClassIdentifier: 
-  _index: 8
-  _lock: 1
-  _model: {fileID: 5988291534813492160, guid: 16f7266af51dec2418a1d6b196b62e31, type: 3}
+  _lock: 0
+  _playerModeType: 3
   _sprite: {fileID: 21300000, guid: 0fa17bd0ee005524e82b3906f4d214fa, type: 3}
+  _tex: {fileID: 0}

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Define;
 
-[CreateAssetMenu(fileName ="New SkinSO", menuName ="SO/Inventory/Skin")]
+[CreateAssetMenu(fileName = "New SkinSO", menuName = "SO/Inventory/Skin")]
 public class SkinSO : ScriptableObject
 {
-    public int _index;
     public bool _lock;
-    public GameObject _model;
+    public PlayerModeType _playerModeType;
+
     public Sprite _sprite;
+    public Texture _modelTex;
 }

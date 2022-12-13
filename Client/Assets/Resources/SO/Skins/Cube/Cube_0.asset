@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e3ce2f6adba5cf45b102a3abbc37ef2, type: 3}
   m_Name: Cube_0
   m_EditorClassIdentifier: 
-  _index: 0
   _lock: 0
-  _model: {fileID: 8923722888654099048, guid: 9b5b3140a1a799b4a97a5b5ea21fdf4f, type: 3}
+  _playerModeType: 1
   _sprite: {fileID: 21300000, guid: d43d51b75e6403b4384c73afc000cbfd, type: 3}
+  _tex: {fileID: 2800000, guid: 92ec2f76097a31a449f9ae0a3947865b, type: 3}

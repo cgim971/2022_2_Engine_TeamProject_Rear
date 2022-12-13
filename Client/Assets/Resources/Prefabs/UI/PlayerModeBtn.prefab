@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4110152338635866243}
   - component: {fileID: 3318394410267613668}
   m_Layer: 5
-  m_Name: Btn
+  m_Name: PlayerModeBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

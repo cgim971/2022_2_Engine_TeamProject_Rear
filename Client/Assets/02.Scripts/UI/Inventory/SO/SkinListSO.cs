@@ -1,28 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Define;
 
 [CreateAssetMenu(fileName = "New SkinList", menuName = "SO/List/SkinList")]
 public class SkinListSO : ScriptableObject
 {
-    public SkinSO _currentCube;
-    public List<SkinSO> _cubeList;
+    public List<SkinInfo> _skinInfoList;
 
-    public SkinSO _currentShip;
-    public List<SkinSO> _shipList;
+    public Sprite GetSprite(int index)
+    {
+        return _skinInfoList[index]._modelList[0]._sprite;
+    }
+}
 
-    public SkinSO _currentUfo;
-    public List<SkinSO> _ufoList;
-
-    public SkinSO _currentWave;
-    public List<SkinSO> _waveList;
-
-    public SkinSO _currentRobot;
-    public List<SkinSO> _robotList;
-
-    public SkinSO _currentSpider;
-    public List<SkinSO> _spiderList;
-
-    public SkinSO _currentBall;
-    public List<SkinSO> _ballList;
+[System.Serializable]
+public class SkinInfo
+{
+    public PlayerModeType _playerModeType;
+    public GameObject _model;
+    public Texture _currentModelTex;
+    public List<SkinSO> _modelList;
 }
