@@ -98,7 +98,27 @@ namespace Define
 
     public static class Player
     {
-
+        public static PlayerModeType GetPlayerModeType(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return PlayerModeType.CUBE;
+                case 1:
+                    return PlayerModeType.SHIP;
+                case 2:
+                    return PlayerModeType.UFO;
+                case 3:
+                    return PlayerModeType.WAVE;
+                case 4:
+                    return PlayerModeType.ROBOT;
+                case 5:
+                    return PlayerModeType.SPIDER;
+                case 6:
+                    return PlayerModeType.BALL;
+            }
+            return PlayerModeType.NONE;
+        }
     }
 
     public static class Math
