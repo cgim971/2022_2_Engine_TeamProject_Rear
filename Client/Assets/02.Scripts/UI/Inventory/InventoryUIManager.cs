@@ -11,6 +11,8 @@ public class InventoryUIManager : MonoBehaviour
     private PlayerModeType _playerModeType;
     [SerializeField] private SkinListSO _skinList;
 
+    [SerializeField] private PrevModel _prevModel;
+
     // 밑의 버튼 생성
     [SerializeField] private RectTransform _playerModeBtnParent;
     [SerializeField] private Button _playerModeBtn;
@@ -52,15 +54,15 @@ public class InventoryUIManager : MonoBehaviour
     {
         if (_contentDictionary.TryGetValue(_playerModeType, out GameObject value))
             value?.SetActive(false);
+
         _playerModeType = playerMode;
+
         if (_contentDictionary.TryGetValue(_playerModeType, out value))
             value?.SetActive(true);
     }
 
     public void SetMode(SkinSO skinSO)
     {
-        Debug.Log(skinSO._modelTex);
-
         SkinInfo skinInfo = null;
         foreach (SkinInfo info in _skinList._skinInfoList)
         {
@@ -71,7 +73,7 @@ public class InventoryUIManager : MonoBehaviour
             }
         }
 
-        Debug.Log(skinInfo?._model.name);
         skinInfo._currentModelTex = skinSO._modelTex;
+        _prevModel.SetModel(skinInfo._model);
     }
 }
