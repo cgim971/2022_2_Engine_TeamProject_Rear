@@ -12,4 +12,19 @@ public class SkinListSO : ScriptableObject
 
     public SkinSO _currentUfo;
     public List<SkinSO> _ufoList;
+
+    public SkinSO _currentShip;
+    public List<SkinSO> _shipList;
+
+    public SkinSO _currentWave;
+    public List<SkinSO> _waveList;
+
+    public SkinSO _currentRobot;
+    public List<SkinSO> _robotList;
+
+    public SkinSO _currentSpider;
+    public List<SkinSO> _spiderList;
+
+    public SkinSO _currentBall;
+    public List<SkinSO> _ballList;
 }

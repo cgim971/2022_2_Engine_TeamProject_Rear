@@ -14,9 +14,9 @@ public class PlayerMode_Ship : PlayerMode_Base
         Debug.Log(_upDir);
         while (true)
         {
-            yield return new WaitUntil(() => Input.GetMouseButton(0));
+            yield return new WaitUntil(() => _playerController.Touch == TouchState.DOWN);
             Jump();
-            yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+            yield return new WaitUntil(() => _playerController.Touch == TouchState.UP);
             JumpingEnd();
             yield return new WaitForFixedUpdate();
         }

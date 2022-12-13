@@ -4,6 +4,7 @@ using UnityEngine;
 using static Define.Math;
 
 
+
 public abstract class PlayerMode_Base : MonoBehaviour
 {
     protected PlayerController _playerController;
@@ -20,6 +21,8 @@ public abstract class PlayerMode_Base : MonoBehaviour
     protected LayerMask _groundLayerMask;
     protected bool _isExtraJump = false;
     protected bool _isGravity = false;
+
+
 
     public void Init()
     {
@@ -52,9 +55,9 @@ public abstract class PlayerMode_Base : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(() => Input.GetMouseButton(0));
+            yield return new WaitUntil(() => _playerController.Touch == TouchState.DOWN);
             CanJump();
-            yield return new WaitUntil(() => Input.GetMouseButtonUp(0) || CheckGround());
+            yield return new WaitUntil(() => _playerController.Touch == TouchState.UP || CheckGround());
             yield return new WaitForFixedUpdate();
         }
     }
@@ -119,7 +122,10 @@ public abstract class PlayerMode_Base : MonoBehaviour
         _isGravity = isGravity;
     }
 
-    public abstract void Move();
+    public virtual void Move()
+    {
+        _rigidbody.MovePosition(_playerTs.position + _playerController.Dir * _speed * _speedManager.Speed * Time.deltaTime);
+    }
 
     /// <summary>
     /// 점프 함수 

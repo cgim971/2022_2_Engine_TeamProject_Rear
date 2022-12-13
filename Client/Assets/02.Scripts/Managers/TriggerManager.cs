@@ -5,11 +5,11 @@ using UnityEngine.Events;
 
 public class TriggerManager : MonoBehaviour
 {
-
     public static TriggerManager Instance => _instance;
     private static TriggerManager _instance;
 
     public UnityEvent Event_Death;
+    public UnityEvent Event_Clear;
 
     private void Awake()
     {
@@ -20,10 +20,13 @@ public class TriggerManager : MonoBehaviour
     public void OnDeath()
     {
         Event_Death?.Invoke();
+        GameManager.Instance.sceneManager.StageScene();
     }
 
-    IEnumerator Death()
+    public void OnClear()
     {
-        yield return null;
+        Event_Clear?.Invoke();
+        GameManager.Instance.sceneManager.LoadingScene("Start");
     }
+
 }

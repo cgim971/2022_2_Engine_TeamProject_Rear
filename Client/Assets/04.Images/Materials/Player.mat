@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player
-  m_Shader: {fileID: -6465566751694194690, guid: 6395a4635e960644bb15d018c8dadde8, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e527a02d09cd4fb4388aff34b637c5a4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_1b3b6d65ffe74aa3880dbc8bfa640844:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -104,7 +108,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_bc95bf898d594717b22c26e5605e378a: {r: 0.0007314645, g: 0.00062806375, b: 0.00023360907, a: 0}
+    - Color_4da4e00b113b4e5388c3df2010b91b55: {r: 7.245283, g: 1.6837118, b: 0, a: 0}
+    - Color_bc95bf898d594717b22c26e5605e378a: {r: 4.7686276, g: 2.447059, b: 1.3490196, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

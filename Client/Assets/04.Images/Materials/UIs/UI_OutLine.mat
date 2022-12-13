@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: UI_OutLine
-  m_Shader: {fileID: -6465566751694194690, guid: 6395a4635e960644bb15d018c8dadde8, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: a5f468ff1ae400d4caef392f4821786f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -104,7 +104,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_bc95bf898d594717b22c26e5605e378a: {r: 3.849056, g: 3.0429711, b: 3.0429711, a: 0}
+    - Color_bc95bf898d594717b22c26e5605e378a: {r: 1.9166646, g: 2.77038, b: 5.016455, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

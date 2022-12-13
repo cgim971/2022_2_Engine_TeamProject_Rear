@@ -25,17 +25,15 @@ public class PlayerMode_Wave : PlayerMode_Base
         SetDir();
     }
 
-    public override void Move()
-    {
-        _rigidbody.MovePosition(_playerTs.position + _upDir * _speed * _speedManager.Speed * Time.deltaTime);
-    }
+    public override void Move() => _rigidbody.MovePosition(_playerTs.position + _upDir * _speed * _speedManager.Speed * Time.deltaTime);
+
     public override IEnumerator InputTouch()
     {
         while (true)
         {
-            yield return new WaitUntil(() => Input.GetMouseButton(0));
+            yield return new WaitUntil(() => _playerController.Touch == TouchState.DOWN);
             Jump();
-            yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+            yield return new WaitUntil(() => _playerController.Touch == TouchState.UP);
             yield return new WaitForFixedUpdate();
         }
     }

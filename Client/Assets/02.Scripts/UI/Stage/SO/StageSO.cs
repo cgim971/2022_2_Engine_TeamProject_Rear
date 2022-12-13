@@ -15,4 +15,8 @@ public class StageSO : ScriptableObject
 
     public bool _isMain;
     public bool _isComming;
+
+    public float _processSliderValue;
+    public float _processSliderMaxValue;
+
 }

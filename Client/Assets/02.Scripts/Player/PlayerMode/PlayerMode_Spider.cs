@@ -43,9 +43,6 @@ public class PlayerMode_Spider : PlayerMode_Base
         _playerController.ReverseGravity();
     }
 
-    public override void Move() => _rigidbody.MovePosition(_playerTs.position + _playerController.Dir * _speed * _speedManager.Speed * Time.deltaTime);
-
-
     public bool CheckOppositeGround()
     {
         _oppositeGroundPosition = Vector3.zero;

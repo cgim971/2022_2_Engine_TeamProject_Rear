@@ -75,12 +75,11 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         _isDrag = true;
-        Debug.Log(eventData.delta.x);
-        if (eventData.delta.x > 3 && _targetIndex != 0)
+        if (eventData.delta.x > 3 && _targetIndex > 0)
         {
             _currentStageInfo.OffPanel();
         }
-        else if (eventData.delta.x < -3 && _targetIndex != _stageCount)
+        else if (eventData.delta.x < -3 && _targetIndex < _stageCount - 1)
         {
             _currentStageInfo.OffPanel();
         }
@@ -101,8 +100,7 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 ++_targetIndex;
             }
         }
-        _currentStageInfo = _stageInfoDictionary[_stageOffset[_targetIndex]];
-    }
+    }   
 
     IEnumerator Scroll()
     {
@@ -110,9 +108,41 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             yield return new WaitUntil(() => !_isDrag);
             var tween = DOTween.To(() => _horizontalScrollbar.value, x => _horizontalScrollbar.value = x, _stageOffset[_targetIndex], 0.1f);
+            _currentStageInfo = _stageInfoDictionary[_stageOffset[_targetIndex]];
             yield return tween.WaitForCompletion();
             _currentStageInfo.OnPanel();
             yield return new WaitUntil(() => _isDrag);
         }
+    }
+
+    public void LeftBtn()
+    {
+        if (_targetIndex > 0)
+        {
+            StartCoroutine(Left());
+        }
+    }
+    IEnumerator Left()
+    {
+        _currentStageInfo.OffPanel();
+        _isDrag = true;
+        yield return null;
+        _targetIndex -= 1;
+        _isDrag = false;
+    }
+    public void RightBtn()
+    {
+        if (_targetIndex < _stageCount - 1)
+        {
+            StartCoroutine(Right());
+        }
+    }
+    IEnumerator Right()
+    {
+        _currentStageInfo.OffPanel();
+        _isDrag = true;
+        yield return null;
+        _targetIndex += 1;
+        _isDrag = false;
     }
 }

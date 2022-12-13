@@ -40,27 +40,25 @@ public class StageInfo : MonoBehaviour
     {
         _stageSO = stageSO;
 
-        if (!stageSO._isMain && !stageSO._isComming) _stageBtn.onClick.AddListener(() => GameManager.Instance.sceneManager.StageScene(stageSO));
+        if (!stageSO._isMain && !stageSO._isComming)
+        {
+            _stageBtn.onClick.AddListener(() => GameManager.Instance.sceneManager.StageScene(stageSO));
+            _producerText.text = $"Made By {_stageSO._stageProducer}";
+
+            _processSlider.gameObject.SetActive(true);
+            _processSlider.maxValue = _stageSO._processSliderMaxValue;
+            _processSlider.value = _stageSO._processSliderValue;
+        }
+        else
+        {
+            _processSlider.gameObject.SetActive(false);
+        }
 
         _titleImage.sprite = _stageSO._stageSprite;
         _titleText.text = $"{_stageSO._stageTitle}";
-        _producerText.text = $"Made By {_stageSO._stageProducer}";
 
         OffPanel();
     }
-
-    //// Test code
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.A))
-    //    {
-    //        OnPanel();
-    //    }
-    //    else if(Input.GetKeyDown(KeyCode.D))
-    //    {
-    //        OffPanel();
-    //    }
-    //}
 
     public void OnPanel()
     {
