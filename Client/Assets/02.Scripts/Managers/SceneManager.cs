@@ -11,7 +11,7 @@ public class SceneManager : MonoBehaviour
     private string _nextScene;
     private CanvasGroup _loadingImage;
     private TextMeshProUGUI _loadingText;
-    private string _loadingMent = "Loading...";
+    //private string _loadingMent = "Loading...";
 
     private void Start()
     {
