@@ -74,6 +74,6 @@ public class InventoryUIManager : MonoBehaviour
         }
 
         skinInfo._currentModelTex = skinSO._modelTex;
-        _prevModel.SetModel(skinInfo._model);
+        _prevModel.SetModel(skinInfo);
     }
 }

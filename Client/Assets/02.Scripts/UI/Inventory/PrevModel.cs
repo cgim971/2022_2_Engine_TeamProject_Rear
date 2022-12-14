@@ -7,6 +7,7 @@ public class PrevModel : MonoBehaviour
 {
     Sequence _rotationSequence;
     bool _isClick = false;
+    private SkinInfo _skinInfo;
 
     private void Awake()
     {
@@ -34,15 +35,27 @@ public class PrevModel : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x + rotate.y, transform.rotation.y - rotate.x, transform.rotation.z) * 0.5f);
     }
 
-    public void SetModel(GameObject model)
+    public void SetModel(SkinInfo skinInfo)
     {
         int count = transform.childCount;
-        for (int i = 0; i < count; i++)
+        GameObject newModel = null;
+        if (_skinInfo == null || skinInfo._playerModeType != _skinInfo._playerModeType)
         {
-            Destroy(transform.GetChild(0).gameObject);
+            for (int i = 0; i < count; i++)
+            {
+                Destroy(transform.GetChild(0).gameObject);
+            }
+
+            newModel = Instantiate(skinInfo._model, transform);
+        }
+        else
+        {
+            newModel = transform.GetChild(0).gameObject;
         }
 
-        GameObject newModel = Instantiate(model, transform);
+        newModel.GetComponent<Renderer>().material.SetTexture("_MainTex", skinInfo._currentModelTex);
         newModel.transform.position = Vector3.zero;
+
+        _skinInfo = skinInfo;
     }
 }

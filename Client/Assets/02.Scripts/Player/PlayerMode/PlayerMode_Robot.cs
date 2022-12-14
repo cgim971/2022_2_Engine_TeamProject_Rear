@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMode_Robot : PlayerMode_Base
 {
     private bool _isJump = false;
-    float time = 0f;
 
     public override void FixedUpdate()
     {

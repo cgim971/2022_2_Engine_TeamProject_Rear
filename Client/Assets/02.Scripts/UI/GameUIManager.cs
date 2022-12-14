@@ -91,12 +91,6 @@ public class GameUIManager : MonoBehaviour
         seq.Play();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-            OffSetting();
-    }
-
     public void OffSetting()
     {
         Sequence seq = DOTween.Sequence();

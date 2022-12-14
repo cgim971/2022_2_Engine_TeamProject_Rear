@@ -117,12 +117,12 @@ public class PlayerController : MonoBehaviour
     // 시간 조정 코드 필요
     public void TimePlay()
     {
-
+        Debug.Log("시간 흐름~!");
     }
 
     public void TimeStop()
     {
-
+        Debug.Log("시간 멈춰!");
     }
 
     #endregion

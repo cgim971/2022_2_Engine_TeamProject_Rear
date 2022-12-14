@@ -7,9 +7,10 @@ using UnityEngine.UI;
 
 public class PlayerBtnInfo : MonoBehaviour
 {
+    [SerializeField] private Image _image; 
     public void Init(InventoryUIManager inventoryUiManager, PlayerModeType playerMode, Sprite modelSprite)
     {
-        this.GetComponent<Image>().sprite = modelSprite;
+        _image.sprite = modelSprite;
         this.GetComponent<Button>().onClick.AddListener(() => inventoryUiManager.SetInventory(playerMode));
     }
 }
