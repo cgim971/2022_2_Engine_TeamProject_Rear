@@ -26,7 +26,7 @@ public class TriggerManager : MonoBehaviour
     public void OnClear()
     {
         Event_Clear?.Invoke();
-        GameManager.Instance.sceneManager.LoadingScene("Start");
+        GameManager.Instance.sceneManager.LoadingScene("StartUI");
     }
 
 }

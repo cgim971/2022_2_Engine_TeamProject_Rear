@@ -10,9 +10,13 @@ public class GameUIManager : MonoBehaviour
 
     [SerializeField] private StageSO _stageSO;
     [SerializeField] private Slider _processSlider;
-    [SerializeField] private CanvasGroup _settingCanvsGroup;
-    [SerializeField] private TextMeshProUGUI _tryText;
 
+    [SerializeField] private CanvasGroup _gamingCanvasGroup;
+    [SerializeField] private CanvasGroup _pauseCanvsGroup;
+
+    [SerializeField] private TextMeshProUGUI _tryText;
+    [SerializeField] private TextMeshProUGUI _titleText;
+ 
     private UIManager _uiManager;
     private CanvasGroup _fadeImage;
 
@@ -20,9 +24,10 @@ public class GameUIManager : MonoBehaviour
 
     private void Start()
     {
-        Init(GameManager.Instance.CurrentStageSO);
         _uiManager = GameManager.Instance.uiManager;
         _fadeImage = _uiManager.FadeImage;
+        _titleText.text = GameManager.Instance.CurrentStageSO._stageTitle;
+        Init(GameManager.Instance.CurrentStageSO);
     }
 
     public void Init(StageSO stageSO)
@@ -32,7 +37,8 @@ public class GameUIManager : MonoBehaviour
         _processSlider.value = 0;
         _tryText.text = $"Attempt {GameManager.Instance.TryCount}";
 
-        OffSetting();
+        _uiManager.OffCanvasGroup(_pauseCanvsGroup);
+        _uiManager.OnCanvasGroup(_gamingCanvasGroup);
 
         Sequence seq = DOTween.Sequence();
         seq.OnRewind(() =>
@@ -70,17 +76,18 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    public void OnSetting()
+    public void OnPause()
     {
         Sequence seq = DOTween.Sequence();
         seq.AppendCallback(() =>
         {
             _uiManager.InitCanvasGroup(_fadeImage);
+            _uiManager.OffCanvasGroup(_gamingCanvasGroup);
         });
         seq.Append(_fadeImage.DOFade(1, _delay));
         seq.AppendCallback(() =>
         {
-            _uiManager.OnCanvasGroup(_settingCanvsGroup);
+            _uiManager.OnCanvasGroup(_pauseCanvsGroup);
             PlayerController.Instance.TimeStop();
         });
         seq.Append(_fadeImage.DOFade(0, _delay));
@@ -91,7 +98,7 @@ public class GameUIManager : MonoBehaviour
         seq.Play();
     }
 
-    public void OffSetting()
+    public void OffPause()
     {
         Sequence seq = DOTween.Sequence();
         seq.AppendCallback(() =>
@@ -101,14 +108,20 @@ public class GameUIManager : MonoBehaviour
         seq.Append(_fadeImage.DOFade(1, _delay));
         seq.AppendCallback(() =>
         {
-            _uiManager.OffCanvasGroup(_settingCanvsGroup);
+            _uiManager.OffCanvasGroup(_pauseCanvsGroup);
             PlayerController.Instance.TimePlay();
         });
         seq.Append(_fadeImage.DOFade(0, _delay));
         seq.OnComplete(() =>
         {
             _uiManager.OffCanvasGroup(_fadeImage);
+            _uiManager.OnCanvasGroup(_gamingCanvasGroup);
         });
         seq.Play();
+    }
+
+    public void ToStart()
+    {
+        SceneManager.LoadScene("StartUI");
     }
 }
