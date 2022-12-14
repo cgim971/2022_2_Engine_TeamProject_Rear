@@ -242,7 +242,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 222613650}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -303,7 +303,19 @@ MonoBehaviour:
   - eventID: 2
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 222613652}
+          m_TargetAssemblyTypeName: ClearUIManager, Assembly-CSharp
+          m_MethodName: TouchClear
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &37815947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,6 +1095,7 @@ RectTransform:
   m_Children:
   - {fileID: 1902768589}
   - {fileID: 729767689}
+  - {fileID: 1097404370}
   - {fileID: 31746787}
   m_Father: {fileID: 992034439}
   m_RootOrder: 2
@@ -2275,7 +2288,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1451223376}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingUIManager, Assembly-CSharp
         m_MethodName: SliderValueChange
         m_Mode: 5
@@ -2949,7 +2962,7 @@ MonoBehaviour:
   _processSlider: {fileID: 1884306087}
   _gamingCanvasGroup: {fileID: 1670469420}
   _pauseCanvsGroup: {fileID: 1451223375}
-  _clearCanvsGroup: {fileID: 0}
+  _clearCanvsGroup: {fileID: 222613651}
   _tryText: {fileID: 541535999}
   _titleText: {fileID: 37815949}
   _delay: 0.2
@@ -3164,6 +3177,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023298066}
   m_CullTransparentMesh: 1
+--- !u!1 &1097404369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1097404370}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1097404370
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097404369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 222613650}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1200872309
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,7 +3301,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1451223376}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingUIManager, Assembly-CSharp
         m_MethodName: SliderValueChange
         m_Mode: 5
@@ -3773,7 +3821,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1451223374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5825e2ff4e4fd564dad363f45ae455ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 0278592212a305640ab371c0291e2882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _bgmSlider: {fileID: 713090419}

@@ -11,6 +11,8 @@ public class StageSO : ScriptableObject
     public Sprite _stageSprite;
     public string _stageProducer;
 
+    public AudioClip _stageAudioClip;
+
     public PlayerModeType _stageMode;
 
     public bool _isMain;

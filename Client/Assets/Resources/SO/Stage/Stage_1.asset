@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Stage_1
   m_EditorClassIdentifier: 
   _stageIndex: 1
-  _stageTitle: C
+  _stageTitle: Wanna by Ikson
   _stageSprite: {fileID: 0}
   _stageProducer: 
+  _stageAudioClip: {fileID: 8300000, guid: 95071a9608e2d6d45a7502e9dee8cc28, type: 3}
   _stageMode: 1
   _isMain: 0
   _isComming: 0
-  _processSliderValue: 9
+  _processSliderValue: 6
   _processSliderMaxValue: 100
+  _isClear: 0

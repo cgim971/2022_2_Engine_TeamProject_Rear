@@ -29,6 +29,8 @@ public class InventoryUIManager : MonoBehaviour
 
     private void Start()
     {
+        _skinList.Init();
+
         for (int i = 0; i < 7; i++)
         {
             SkinInfo skinInfo = _skinList._skinInfoList[i];

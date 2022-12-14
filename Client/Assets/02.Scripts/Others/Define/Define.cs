@@ -29,12 +29,9 @@ namespace Define
         END
     }
 
-    public enum SoundType
-    {
-        BGM,
-        EFFECT,
-        END
-    }
+
+
+
 
     public static class Gravity
     {
@@ -127,6 +124,12 @@ namespace Define
         {
             return new Vector3(Mathf.Abs(value.x), Mathf.Abs(value.y), Mathf.Abs(value.z));
         }
+    }
+
+    public static class Sound
+    {
+        public readonly static string _bgmVolume = "BGM_VOLUME";
+        public readonly static string _effectVolume = "EFFECT_VOLUME";
     }
 }
 

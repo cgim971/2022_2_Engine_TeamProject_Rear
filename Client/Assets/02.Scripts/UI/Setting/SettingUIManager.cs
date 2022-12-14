@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using static Define.Sound;
 public class SettingUIManager : MonoBehaviour
 {
-
-    readonly string _bgmVolume = "BGM_VOLUME";
-    readonly string _effectVolume = "EFFECT_VOLUME";
-
     [SerializeField] private Slider _bgmSlider;
     [SerializeField] private Slider _effectSlider;
-    [SerializeField] private Slider _processSlider;
 
     private void Awake() => Init();
 
@@ -23,16 +18,12 @@ public class SettingUIManager : MonoBehaviour
         _bgmSlider.value = bgmVolume;
         _effectSlider.value = effectVolume;
     }
-
-    public void SetProcess()
-    {
-        _processSlider.maxValue = GameManager.Instance.CurrentStageSO._processSliderMaxValue;
-        _processSlider.value = GameManager.Instance.CurrentStageSO._processSliderValue;
-    }
-
     public void SliderValueChange(string slider)
     {
-        if (slider == "BGM") PlayerPrefs.SetFloat(_bgmVolume, _bgmSlider.value);
+        if (slider == "BGM")
+        {
+            PlayerPrefs.SetFloat(_bgmVolume, _bgmSlider.value);
+        }
         else if (slider == "EFFECT") PlayerPrefs.SetFloat(_effectVolume, _effectSlider.value);
     }
 }

@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviour
         if (_instance == null)
             _instance = this;
 
+        SoundManager.PlayBGM(GameManager.Instance.CurrentStageSO._stageAudioClip);
+
         _customGravity = GetComponent<CustomGravity>();
         _speedManager = GetComponent<SpeedManager>();
         _sizeManager = GetComponent<SizeManager>();

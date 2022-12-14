@@ -27,8 +27,13 @@ public class GameManager : MonoSingleton<GameManager>
     {
         uiManager = this.GetComponent<UIManager>();
         sceneManager = this.GetComponent<SceneManager>();
-
+        
         FrameManager.SetFrame(_frame);
+    }
+
+    private void Start()
+    {
+        SoundManager.PlayBGM("Wanna by Ikson");
     }
 
     public void Stage(StageSO stageSO) => _currentStageSO = stageSO;

@@ -84,7 +84,10 @@ public class GameUIManager : MonoBehaviour
         {
             _uiManager.InitCanvasGroup(_fadeImage);
             _uiManager.OffCanvasGroup(_gamingCanvasGroup);
+            _pauseCanvsGroup.GetComponent<PauseUIManager>().SetProcess();
             Time.timeScale = 0;
+            SoundManager.BgmPause();
+
         });
         seq.Append(_fadeImage.DOFade(1, _delay));
         seq.AppendCallback(() =>
@@ -105,7 +108,6 @@ public class GameUIManager : MonoBehaviour
         seq.AppendCallback(() =>
         {
             _uiManager.InitCanvasGroup(_fadeImage);
-            Time.timeScale = 1;
         });
         seq.Append(_fadeImage.DOFade(1, _delay));
         seq.AppendCallback(() =>
@@ -117,17 +119,21 @@ public class GameUIManager : MonoBehaviour
         {
             _uiManager.OffCanvasGroup(_fadeImage);
             _uiManager.OnCanvasGroup(_gamingCanvasGroup);
+            Time.timeScale = 1;
+            SoundManager.BgmUnPause();
         });
         seq.Play();
     }
 
     public void ToStart()
     {
-        SceneManager.LoadScene("StartUI");
+        Time.timeScale = 1;
+        GameManager.Instance.sceneManager.LoadingScene("StartUI");
     }
 
     public void RetryStage()
     {
+        Time.timeScale = 1;
         GameManager.Instance.sceneManager.StageScene();
     }
 }
