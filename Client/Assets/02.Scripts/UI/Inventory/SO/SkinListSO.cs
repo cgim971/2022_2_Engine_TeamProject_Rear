@@ -19,6 +19,7 @@ public class SkinInfo
 {
     public PlayerModeType _playerModeType;
     public GameObject _model;
+    public Material _modelMat;
     public Texture _currentModelTex;
     public List<SkinSO> _modelList;
 }

@@ -15,6 +15,7 @@ MonoBehaviour:
   _skinInfoList:
   - _playerModeType: 1
     _model: {fileID: 4266006418933853604, guid: 2f86f899cb798c8489635f8fc7147df0, type: 3}
+    _modelMat: {fileID: 2100000, guid: 6efaf33960c72bb40835af7214122008, type: 2}
     _currentModelTex: {fileID: 0}
     _modelList:
     - {fileID: 11400000, guid: 879ec013543166d4cb148237baadac2a, type: 2}
@@ -24,6 +25,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c04c9d4f81bd64a47a722d953947e0c1, type: 2}
   - _playerModeType: 2
     _model: {fileID: 5954855151479099015, guid: 15755fab1c7c5964d91491c1072df002, type: 3}
+    _modelMat: {fileID: 2100000, guid: de0d3f85daff2af4897296ae2a09bdb4, type: 2}
     _currentModelTex: {fileID: 0}
     _modelList:
     - {fileID: 11400000, guid: 9c4622ae0c1940249ab9d79ebed24c7b, type: 2}
@@ -33,6 +35,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 59928241bd95e90438266c22f738a544, type: 2}
   - _playerModeType: 3
     _model: {fileID: 7596317978908766135, guid: db2318e99fb9786449eb75420fd020b0, type: 3}
+    _modelMat: {fileID: 2100000, guid: e650c953adccd184caa294d0c30abc77, type: 2}
     _currentModelTex: {fileID: 0}
     _modelList:
     - {fileID: 11400000, guid: 389af2a86e463c541a4dcfc0d6559ef4, type: 2}
@@ -42,6 +45,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 12b250d9abf4d6a4b9fda9a073305b4f, type: 2}
   - _playerModeType: 4
     _model: {fileID: 2680416266462314878, guid: f7e26daf593e0ab40ab6dd3c4222a8ac, type: 3}
+    _modelMat: {fileID: 2100000, guid: b408d4ed3d85b9e499809d453fb189e7, type: 2}
     _currentModelTex: {fileID: 0}
     _modelList:
     - {fileID: 11400000, guid: dd658c8688c54c845bd08b09d29139a3, type: 2}
@@ -51,6 +55,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8ff0142ba7c5d904e9cece1d9173ce4f, type: 2}
   - _playerModeType: 5
     _model: {fileID: 89490037389599320, guid: 8222202e4ee05fb4da3eab3c7969e19b, type: 3}
+    _modelMat: {fileID: 2100000, guid: 8ce800a7fd215b047bed00c20b6a80c8, type: 2}
     _currentModelTex: {fileID: 0}
     _modelList:
     - {fileID: 11400000, guid: ef645a8ac6e98464d9562d7f08562866, type: 2}
@@ -60,6 +65,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 0e49093ea458d02419bf2aa524e193a9, type: 2}
   - _playerModeType: 6
     _model: {fileID: 8256356403854474886, guid: 717cc8176c0b35b42a01ba3543f9096f, type: 3}
+    _modelMat: {fileID: 2100000, guid: f7a09824a7aeaf84783114adae96f9ec, type: 2}
     _currentModelTex: {fileID: 0}
     _modelList:
     - {fileID: 11400000, guid: a4de2c7c98b1ff947aca77b0936888fd, type: 2}
@@ -69,6 +75,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c0e1e8435ced5fb4db726a97c54eb073, type: 2}
   - _playerModeType: 7
     _model: {fileID: 7471135227852298560, guid: b4eba52ef3da9824cb51a4bde44e18a7, type: 3}
+    _modelMat: {fileID: 2100000, guid: 75d63971284f7f043934d8bb9d137a6b, type: 2}
     _currentModelTex: {fileID: 0}
     _modelList:
     - {fileID: 11400000, guid: c128caad24e1fa3478691e3c19c6c55b, type: 2}

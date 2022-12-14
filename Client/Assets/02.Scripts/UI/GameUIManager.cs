@@ -13,10 +13,11 @@ public class GameUIManager : MonoBehaviour
 
     [SerializeField] private CanvasGroup _gamingCanvasGroup;
     [SerializeField] private CanvasGroup _pauseCanvsGroup;
+    [SerializeField] private CanvasGroup _clearCanvsGroup;
 
     [SerializeField] private TextMeshProUGUI _tryText;
     [SerializeField] private TextMeshProUGUI _titleText;
- 
+
     private UIManager _uiManager;
     private CanvasGroup _fadeImage;
 
@@ -78,17 +79,17 @@ public class GameUIManager : MonoBehaviour
 
     public void OnPause()
     {
-        Sequence seq = DOTween.Sequence();
+        Sequence seq = DOTween.Sequence().SetUpdate(true);
         seq.AppendCallback(() =>
         {
             _uiManager.InitCanvasGroup(_fadeImage);
             _uiManager.OffCanvasGroup(_gamingCanvasGroup);
+            Time.timeScale = 0;
         });
         seq.Append(_fadeImage.DOFade(1, _delay));
         seq.AppendCallback(() =>
         {
             _uiManager.OnCanvasGroup(_pauseCanvsGroup);
-            PlayerController.Instance.TimeStop();
         });
         seq.Append(_fadeImage.DOFade(0, _delay));
         seq.OnComplete(() =>
@@ -100,16 +101,16 @@ public class GameUIManager : MonoBehaviour
 
     public void OffPause()
     {
-        Sequence seq = DOTween.Sequence();
+        Sequence seq = DOTween.Sequence().SetUpdate(true);
         seq.AppendCallback(() =>
         {
             _uiManager.InitCanvasGroup(_fadeImage);
+            Time.timeScale = 1;
         });
         seq.Append(_fadeImage.DOFade(1, _delay));
         seq.AppendCallback(() =>
         {
             _uiManager.OffCanvasGroup(_pauseCanvsGroup);
-            PlayerController.Instance.TimePlay();
         });
         seq.Append(_fadeImage.DOFade(0, _delay));
         seq.OnComplete(() =>
@@ -123,5 +124,10 @@ public class GameUIManager : MonoBehaviour
     public void ToStart()
     {
         SceneManager.LoadScene("StartUI");
+    }
+
+    public void RetryStage()
+    {
+        GameManager.Instance.sceneManager.StageScene();
     }
 }

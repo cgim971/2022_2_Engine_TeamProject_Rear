@@ -53,7 +53,7 @@ public class PrevModel : MonoBehaviour
             newModel = transform.GetChild(0).gameObject;
         }
 
-        newModel.GetComponent<Renderer>().material.SetTexture("_MainTex", skinInfo._currentModelTex);
+        skinInfo._modelMat.SetTexture("_MainTex", skinInfo._currentModelTex);
         newModel.transform.position = Vector3.zero;
 
         _skinInfo = skinInfo;

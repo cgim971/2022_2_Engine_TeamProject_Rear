@@ -11,6 +11,7 @@ public class SettingUIManager : MonoBehaviour
 
     [SerializeField] private Slider _bgmSlider;
     [SerializeField] private Slider _effectSlider;
+    [SerializeField] private Slider _processSlider;
 
     private void Awake() => Init();
 
@@ -21,6 +22,12 @@ public class SettingUIManager : MonoBehaviour
 
         _bgmSlider.value = bgmVolume;
         _effectSlider.value = effectVolume;
+    }
+
+    public void SetProcess()
+    {
+        _processSlider.maxValue = GameManager.Instance.CurrentStageSO._processSliderMaxValue;
+        _processSlider.value = GameManager.Instance.CurrentStageSO._processSliderValue;
     }
 
     public void SliderValueChange(string slider)
