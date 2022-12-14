@@ -11,21 +11,25 @@ public class PlayerMode_Spider : PlayerMode_Base
     {
     }
 
-    public override void CanJump()
+    public override bool CanJump()
     {
         if (CheckOppositeGround())
         {
             Teleport();
+            return true;
         }
         else if (CheckGround())
         {
             Jump();
+            return true;
         }
         else if (_isExtraJump)
         {
             _isExtraJump = false;
             Jump();
+            return true;
         }
+        return false;
 
     }
 

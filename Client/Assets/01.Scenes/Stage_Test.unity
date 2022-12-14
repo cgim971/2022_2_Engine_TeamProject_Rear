@@ -2288,7 +2288,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1451223376}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingUIManager, Assembly-CSharp
         m_MethodName: SliderValueChange
         m_Mode: 5
@@ -2962,7 +2962,7 @@ MonoBehaviour:
   _processSlider: {fileID: 1884306087}
   _gamingCanvasGroup: {fileID: 1670469420}
   _pauseCanvsGroup: {fileID: 1451223375}
-  _clearCanvsGroup: {fileID: 0}
+  _clearCanvsGroup: {fileID: 222613651}
   _tryText: {fileID: 541535999}
   _titleText: {fileID: 37815949}
   _delay: 0.2
@@ -3301,7 +3301,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1451223376}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingUIManager, Assembly-CSharp
         m_MethodName: SliderValueChange
         m_Mode: 5
@@ -3821,7 +3821,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1451223374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5825e2ff4e4fd564dad363f45ae455ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 0278592212a305640ab371c0291e2882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _bgmSlider: {fileID: 713090419}

@@ -63,16 +63,16 @@ public class GameUIManager : MonoBehaviour
             yield return null;
             if (_processSlider.maxValue > _processSlider.value)
             {
-                _processSlider.value += 1f;
+                _processSlider.value += Time.deltaTime;
                 if (_processSlider.value > _stageSO._processSliderValue)
                 {
                     _stageSO._processSliderValue = _processSlider.value;
                 }
-                yield return new WaitForSeconds(1f);
             }
             else
             {
                 Debug.Log("Clear");
+                yield break;
             }
         }
     }

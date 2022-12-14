@@ -72,5 +72,9 @@ public class SoundManager
 
     public static void BgmUnPause() => _bgmAudioSource.UnPause();
 
-    public static void SetBgmVolume() => _bgmAudioSource.volume = PlayerPrefs.GetFloat(_bgmVolume, 1);
+    public static void SetBgmVolume()
+    {
+        if (_bgmAudioSource != null)
+            _bgmAudioSource.volume = PlayerPrefs.GetFloat(_bgmVolume, 1);
+    }
 }

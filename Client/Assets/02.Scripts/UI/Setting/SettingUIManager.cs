@@ -23,6 +23,7 @@ public class SettingUIManager : MonoBehaviour
         if (slider == "BGM")
         {
             PlayerPrefs.SetFloat(_bgmVolume, _bgmSlider.value);
+            SoundManager.SetBgmVolume();
         }
         else if (slider == "EFFECT") PlayerPrefs.SetFloat(_effectVolume, _effectSlider.value);
     }

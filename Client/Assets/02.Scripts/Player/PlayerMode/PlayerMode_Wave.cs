@@ -57,5 +57,5 @@ public class PlayerMode_Wave : PlayerMode_Base
 
     public override void Animation() { }
 
-    public override void CanJump() { }
+    public override bool CanJump() => true;
 }

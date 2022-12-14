@@ -56,8 +56,11 @@ public abstract class PlayerMode_Base : MonoBehaviour
         while (true)
         {
             yield return new WaitUntil(() => _playerController.Touch == TouchState.DOWN);
-            CanJump();
-            yield return new WaitUntil(() => _playerController.Touch == TouchState.UP || CheckGround());
+            if (CanJump())
+            {
+                yield return new WaitUntil(() => _playerController.Touch == TouchState.UP || CheckGround());
+            }
+
             yield return new WaitForFixedUpdate();
         }
     }
@@ -134,7 +137,7 @@ public abstract class PlayerMode_Base : MonoBehaviour
     /// <summary>
     /// 점프 가능한지 체크 함수 
     /// </summary>
-    public abstract void CanJump();
+    public abstract bool CanJump();
     /// <summary>
     /// 애니메이션
     /// </summary>

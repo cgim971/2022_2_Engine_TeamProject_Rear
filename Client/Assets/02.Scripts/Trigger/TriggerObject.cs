@@ -25,19 +25,6 @@ public class TriggerObject : MonoBehaviour
         _triggerList.Clear();
     }
 
-    [ContextMenu("Trigger_MoveObj")]
-    public void AddMoveObj() => _triggerList.Add(gameObject.AddComponent<Trigger_MoveObj>());
-
-    [ContextMenu("Trigger_RotateObj")]
-    public void AddRotateObj() => _triggerList.Add(gameObject.AddComponent<Trigger_RotateObj>());
-
-    [ContextMenu("Trigger_AlphaObj")]
-    public void AddAlphaObj() => _triggerList.Add(gameObject.AddComponent<Trigger_AlphaObj>());
-
-    [ContextMenu("Trigger_CameraObj")]
-    public void AddCameraObj() => _triggerList.Add(gameObject.AddComponent<Trigger_CameraObj>());
-
-
     #region Trigger Object
     [ContextMenu("Trigger_JumpRing")]
     public void AddJumpRing() => _triggerList.Add(gameObject.AddComponent<Trigger_JumpRing>());

@@ -15,21 +15,23 @@ public class PlayerMode_Cube : PlayerMode_Base
 
     }
 
-    public override void CanJump()
+    public override bool CanJump()
     {
         // 땅과 닿음
         if (CheckGround())
         {
             Jump();
-            return;
+            return true;
         }
         // 추가로 점프가 가능한지
         else if (_isExtraJump == true)
         {
             _isExtraJump = false;
             Jump();
-            return;
+            return true;
         }
+
+        return false;
     }
 
     public override void Jump()

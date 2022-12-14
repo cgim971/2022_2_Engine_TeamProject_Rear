@@ -9,6 +9,7 @@ public class Trigger_Portal_ChangeDirection : Trigger_Portal_Base
 
     public override void Trigger()
     {
+        _playerController.transform.position = transform.position;
         _playerController.SetDir(_dirType);
     }
     public override void OffTrigger() { }

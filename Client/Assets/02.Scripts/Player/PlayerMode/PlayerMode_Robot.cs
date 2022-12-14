@@ -31,13 +31,14 @@ public class PlayerMode_Robot : PlayerMode_Base
 
     }
 
-    public override void CanJump()
+    public override bool CanJump()
     {
         _isJump = false;
         if (CheckGround())
         {
             StartCoroutine(Jumping());
         }
+        return true;
     }
 
     IEnumerator Jumping()

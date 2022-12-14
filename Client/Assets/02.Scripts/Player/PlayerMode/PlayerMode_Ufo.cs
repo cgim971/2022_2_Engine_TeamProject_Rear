@@ -6,7 +6,11 @@ public class PlayerMode_Ufo : PlayerMode_Base
 {
     public override void Animation() { }
 
-    public override void CanJump() => Jump();
+    public override bool CanJump()
+    {
+        Jump();
+        return true;
+    }
 
     public override void Jump()
     {
