@@ -11,6 +11,21 @@ public class PlayerMode_Spider : PlayerMode_Base
     {
     }
 
+    public override IEnumerator InputTouch()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => _playerController.Touch == TouchState.DOWN);
+            if (CanJump())
+            {
+                yield return new WaitUntil(() => _playerController.Touch == TouchState.UP);
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+
     public override bool CanJump()
     {
         if (CheckOppositeGround())
