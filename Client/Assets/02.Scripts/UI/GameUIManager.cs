@@ -23,10 +23,15 @@ public class GameUIManager : MonoBehaviour
 
     [SerializeField] private float _delay;
 
+    private bool _isDead;
+    public void SetIsDead(bool isDead) => _isDead = isDead;
+
     private void Start()
     {
         _uiManager = GameManager.Instance.uiManager;
         _fadeImage = _uiManager.FadeImage;
+        _uiManager.OffCanvasGroup(_fadeImage);
+
         _titleText.text = GameManager.Instance.CurrentStageSO._stageTitle;
         Init(GameManager.Instance.CurrentStageSO);
     }
@@ -64,9 +69,15 @@ public class GameUIManager : MonoBehaviour
             if (_processSlider.maxValue > _processSlider.value)
             {
                 _processSlider.value += Time.deltaTime;
+                
                 if (_processSlider.value > _stageSO._processSliderValue)
                 {
                     _stageSO._processSliderValue = _processSlider.value;
+                }
+
+                if(_isDead == true)
+                {
+                    yield break;
                 }
             }
             else
@@ -125,14 +136,38 @@ public class GameUIManager : MonoBehaviour
         seq.Play();
     }
 
+    public void OnClear()
+    {
+        Sequence seq = DOTween.Sequence().SetUpdate(true);
+        seq.AppendCallback(() =>
+        {
+            _uiManager.InitCanvasGroup(_fadeImage);
+            _uiManager.OffCanvasGroup(_gamingCanvasGroup);
+        });
+        seq.Append(_fadeImage.DOFade(1, _delay));
+        seq.AppendCallback(() =>
+        {
+            _uiManager.OnCanvasGroup(_clearCanvsGroup);
+        });
+        seq.Append(_fadeImage.DOFade(0, _delay));
+        seq.OnComplete(() =>
+        {
+            _uiManager.OffCanvasGroup(_fadeImage);
+        });
+        seq.Play();
+    }
+
     public void ToStart()
     {
+        // 수정 : 페이드 
+        _uiManager.InitCanvasGroup(_fadeImage);
         Time.timeScale = 1;
         GameManager.Instance.sceneManager.LoadingScene("StartUI");
     }
 
     public void RetryStage()
     {
+        _uiManager.InitCanvasGroup(_fadeImage);
         Time.timeScale = 1;
         GameManager.Instance.sceneManager.StageScene();
     }

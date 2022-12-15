@@ -65,7 +65,6 @@ public class SceneManager : MonoBehaviour
             {
                 op.allowSceneActivation = true;
                 _loadingImage.DOFade(0f, 0.2f);
-                //LoadScene("GameUI", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 yield break;
             }
         }

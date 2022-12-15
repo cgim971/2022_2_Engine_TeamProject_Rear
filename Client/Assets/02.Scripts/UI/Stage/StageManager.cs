@@ -21,6 +21,11 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     Dictionary<float, StageInfo> _stageInfoDictionary = new Dictionary<float, StageInfo>();
     private ScrollRect _scrollRect;
     [SerializeField] private Scrollbar _horizontalScrollbar;
+
+
+    [SerializeField] private GameObject _leftBtn;
+    [SerializeField] private GameObject _rightBtn;
+
     private void Start()
     {
         _scrollRect = GetComponent<ScrollRect>();
@@ -35,6 +40,8 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         CreateStage();
 
         StartCoroutine(Scroll());
+
+        CheckButton();
     }
 
     void CreateStage()
@@ -100,7 +107,7 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 ++_targetIndex;
             }
         }
-    }   
+    }
 
     IEnumerator Scroll()
     {
@@ -109,6 +116,7 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             yield return new WaitUntil(() => !_isDrag);
             var tween = DOTween.To(() => _horizontalScrollbar.value, x => _horizontalScrollbar.value = x, _stageOffset[_targetIndex], 0.1f);
             _currentStageInfo = _stageInfoDictionary[_stageOffset[_targetIndex]];
+            CheckButton();
             yield return tween.WaitForCompletion();
             _currentStageInfo.OnPanel();
             yield return new WaitUntil(() => _isDrag);
@@ -129,7 +137,9 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         yield return null;
         _targetIndex -= 1;
         _isDrag = false;
+        CheckButton();
     }
+
     public void RightBtn()
     {
         if (_targetIndex < _stageCount - 1)
@@ -144,5 +154,12 @@ public class StageManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         yield return null;
         _targetIndex += 1;
         _isDrag = false;
+        CheckButton();
+    }
+
+    public void CheckButton()
+    {
+        _leftBtn.SetActive(_targetIndex == 0 ? false : true);
+        _rightBtn.SetActive(_targetIndex == _stageCount - 1 ? false : true);
     }
 }

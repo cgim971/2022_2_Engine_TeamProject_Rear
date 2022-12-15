@@ -32,8 +32,11 @@ public class PlayerMode_Wave : PlayerMode_Base
         while (true)
         {
             yield return new WaitUntil(() => _playerController.Touch == TouchState.DOWN);
+            _isUp = true;
             Jump();
             yield return new WaitUntil(() => _playerController.Touch == TouchState.UP);
+            _isUp = false;
+            Jump();
             yield return new WaitForFixedUpdate();
         }
     }
@@ -51,7 +54,6 @@ public class PlayerMode_Wave : PlayerMode_Base
     public override void Jump()
     {
         _rigidbody.velocity = Vector3.zero;
-        _isUp = !_isUp;
         _upDir = _isUp ? (_playerController.Dir + _playerController.Gravity * _angle * -1) : (_playerController.Dir + _playerController.Gravity * _angle);
     }
 

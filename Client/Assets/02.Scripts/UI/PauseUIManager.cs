@@ -9,6 +9,7 @@ public class PauseUIManager : MonoBehaviour
     [SerializeField] private Slider _bgmSlider;
     [SerializeField] private Slider _effectSlider;
     [SerializeField] private Slider _processSlider;
+    [SerializeField] private Slider _processSliderA;
 
     private void Awake() => Init();
 
@@ -23,8 +24,8 @@ public class PauseUIManager : MonoBehaviour
 
     public void SetProcess()
     {
-        _processSlider.maxValue = GameManager.Instance.CurrentStageSO._processSliderMaxValue;
-        _processSlider.value = GameManager.Instance.CurrentStageSO._processSliderValue;
+        _processSlider.maxValue = _processSliderA.maxValue;
+        _processSlider.value = _processSliderA.value;
     }
 
     public void SliderValueChange(string slider)

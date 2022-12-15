@@ -3785,6 +3785,8 @@ MonoBehaviour:
   _stagePanel: {fileID: 3491898563338774690, guid: b0957e8263028e84a8cf02f8a2925c4c, type: 3}
   _content: {fileID: 1911319800}
   _horizontalScrollbar: {fileID: 2024187950}
+  _leftBtn: {fileID: 739648638}
+  _rightBtn: {fileID: 952113662}
 --- !u!1 &1136910109
 GameObject:
   m_ObjectHideFlags: 0

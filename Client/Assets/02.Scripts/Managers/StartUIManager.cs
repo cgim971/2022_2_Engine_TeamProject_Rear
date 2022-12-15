@@ -173,8 +173,5 @@ public class StartUIManager : MonoBehaviour
             Application.Quit();
         });
         seq.Play();
-
     }
-
-
 }

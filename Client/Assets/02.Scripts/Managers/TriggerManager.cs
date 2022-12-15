@@ -10,6 +10,7 @@ public class TriggerManager : MonoBehaviour
 
     public UnityEvent Event_Death;
     public UnityEvent Event_Clear;
+    public UnityEvent Event_ClearPanel;
 
     private void Awake()
     {
@@ -20,13 +21,24 @@ public class TriggerManager : MonoBehaviour
     public void OnDeath()
     {
         Event_Death?.Invoke();
+        StartCoroutine(Death());
+    }
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(0.8f);
         GameManager.Instance.sceneManager.StageScene();
+
     }
 
     public void OnClear()
     {
         Event_Clear?.Invoke();
-        GameManager.Instance.sceneManager.LoadingScene("StartUI");
+        StartCoroutine(Clear());
     }
 
+    IEnumerator Clear()
+    {
+        yield return new WaitForSeconds(0.8f);
+        Event_ClearPanel?.Invoke();
+    }
 }

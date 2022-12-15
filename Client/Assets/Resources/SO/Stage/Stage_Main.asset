@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Stage_Main
   m_EditorClassIdentifier: 
   _stageIndex: 0
-  _stageTitle: I have no idea
+  _stageTitle: BloR
   _stageSprite: {fileID: 21300000, guid: a6e7f9dd6831bc842b151f9953783e76, type: 3}
-  _stageProducer: Chanhee
+  _stageProducer: "\uC6B0\uB9C8\uC774"
+  _stageAudioClip: {fileID: 0}
   _stageMode: 0
   _isMain: 1
   _isComming: 0
+  _processSliderValue: 0
+  _processSliderMaxValue: 0
+  _isClear: 0

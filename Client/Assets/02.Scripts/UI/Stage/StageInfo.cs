@@ -43,7 +43,6 @@ public class StageInfo : MonoBehaviour
         if (!stageSO._isMain && !stageSO._isComming)
         {
             _stageBtn.onClick.AddListener(() => GameManager.Instance.sceneManager.StageScene(stageSO));
-            _producerText.text = $"Made By {_stageSO._stageProducer}";
 
             _processSlider.gameObject.SetActive(true);
             _processSlider.maxValue = _stageSO._processSliderMaxValue;
@@ -54,8 +53,10 @@ public class StageInfo : MonoBehaviour
             _processSlider.gameObject.SetActive(false);
         }
 
-        _titleImage.sprite = _stageSO._stageSprite;
         _titleText.text = $"{_stageSO._stageTitle}";
+        _titleImage.sprite = _stageSO._stageSprite;
+
+        _producerText.text = $"Made By {_stageSO._stageProducer}";
 
         OffPanel();
     }

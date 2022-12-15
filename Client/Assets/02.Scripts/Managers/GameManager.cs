@@ -27,7 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         uiManager = this.GetComponent<UIManager>();
         sceneManager = this.GetComponent<SceneManager>();
-        
+
         FrameManager.SetFrame(_frame);
     }
 
@@ -36,5 +36,9 @@ public class GameManager : MonoSingleton<GameManager>
         SoundManager.PlayBGM("Wanna by Ikson");
     }
 
-    public void Stage(StageSO stageSO) => _currentStageSO = stageSO;
+    public void Stage(StageSO stageSO)
+    {
+        Debug.Log("A");
+        _currentStageSO = stageSO;
+    }
 }
