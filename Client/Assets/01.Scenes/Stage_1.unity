@@ -6430,14 +6430,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clear
       objectReference: {fileID: 0}
-    - target: {fileID: 97941031156662332, guid: 912f9d1393b09884ea0f4e8bde15d88c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 97941031156662334, guid: 912f9d1393b09884ea0f4e8bde15d88c, type: 3}
-      propertyPath: ShapeModule.m_Rotation.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 97941031156662335, guid: 912f9d1393b09884ea0f4e8bde15d88c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7452,7 +7444,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2f2c9f513527849b67a0c38764c46f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClear:
+  _targetTs: {fileID: 1373672979}
+  Event_Clear:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 798601980}
