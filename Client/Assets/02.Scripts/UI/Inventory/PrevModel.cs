@@ -24,15 +24,15 @@ public class PrevModel : MonoBehaviour
 
     public void SetClick(bool isClick)
     {
-        _isClick = isClick;
+        // _isClick = isClick;
 
-        if (_isClick) _rotationSequence.Pause();
-        else _rotationSequence.Play();
+        // if (_isClick) _rotationSequence.Pause();
+        // else _rotationSequence.Play();
     }
 
     public void SetModelRotation(Vector3 rotate)
     {
-        transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x + rotate.y, transform.rotation.y - rotate.x, transform.rotation.z) * 0.5f);
+        // transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x + rotate.y, transform.rotation.y - rotate.x, transform.rotation.z) * 0.5f);
     }
 
     public void SetModel(SkinInfo skinInfo)
