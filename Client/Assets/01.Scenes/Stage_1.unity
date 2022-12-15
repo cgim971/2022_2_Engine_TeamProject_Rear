@@ -150,8 +150,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12716822}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -104, y: 10, z: 71.5}
-  m_LocalScale: {x: 65, y: 1, z: 3}
+  m_LocalPosition: {x: -109, y: 10, z: 71.5}
+  m_LocalScale: {x: 75, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 2066956446}
   m_RootOrder: 10
@@ -2661,7 +2661,7 @@ GameObject:
   - component: {fileID: 518429020}
   - component: {fileID: 518429021}
   m_Layer: 0
-  m_Name: DeathCam
+  m_Name: EventCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4151,7 +4151,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1002669518}
         m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
-        m_MethodName: OnDeath
+        m_MethodName: OnEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4216,6 +4216,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1002669518}
+        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
+        m_MethodName: OnEvent
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5101,7 +5113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _followPlayerCam: {fileID: 1308969864}
-  _deathCam: {fileID: 518429021}
+  _eventCam: {fileID: 518429021}
 --- !u!1 &1023298066
 GameObject:
   m_ObjectHideFlags: 0
@@ -5585,8 +5597,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180365264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -104, y: 0, z: 71.5}
-  m_LocalScale: {x: 65, y: 1, z: 3}
+  m_LocalPosition: {x: -109, y: 0, z: 71.5}
+  m_LocalScale: {x: 75, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 2066956446}
   m_RootOrder: 9
@@ -6432,7 +6444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 97941031156662335, guid: 912f9d1393b09884ea0f4e8bde15d88c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 97941031156662335, guid: 912f9d1393b09884ea0f4e8bde15d88c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7386,7 +7398,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576914999}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7887,7 +7899,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670469418}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

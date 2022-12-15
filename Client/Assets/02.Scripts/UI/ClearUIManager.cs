@@ -13,7 +13,7 @@ public class ClearUIManager : MonoBehaviour
     public void OnClear()
     {
         _titleText.text = $"{GameManager.Instance.CurrentStageSO._stageTitle} Complete!";
-        _attemptText.text = $"Attempts : {GameManager.Instance.TryCount}";
+        _attemptText.text = $"Attempts : {GameManager.Instance.TryCount - 1}";
         _timeText.text = $"Time : ";
     }
 

@@ -9,28 +9,32 @@ public class CameraManager : MonoBehaviour
 
     // To do : Priority 값 조정으로 따지기
     [SerializeField] private CinemachineVirtualCamera _followPlayerCam;
-    [SerializeField] private CinemachineVirtualCamera _deathCam;
+    [SerializeField] private CinemachineVirtualCamera _eventCam;
+
+    private CinemachineVirtualCamera _currentCam;
 
     private void Awake()
     {
         _playerController = FindObjectOfType<PlayerController>();
+        _currentCam = _followPlayerCam;
     }
 
-    public void OnDeath()
+    public void OnEvent()
     {
-        SetDeathCamPos(_playerController.FollowTs.position, _playerController.FollowTs.rotation);
-        DeathCam();
+        SetCamPos(_playerController.FollowTs.position, _playerController.FollowTs.rotation);
+        SetCam(_eventCam);
     }
 
-    public void SetDeathCamPos(Vector3 playerPos, Quaternion playerRot)
+    public void SetCamPos(Vector3 playerPos, Quaternion playerRot)
     {
-        _deathCam.transform.position = playerPos;
-        _deathCam.transform.rotation = playerRot;
+        _eventCam.transform.position = playerPos;
+        _eventCam.transform.rotation = playerRot;
     }
 
-    public void DeathCam()
+    public void SetCam(CinemachineVirtualCamera camera)
     {
-        _followPlayerCam.Priority = 0;
-        _deathCam.Priority = 10;
+        _currentCam.Priority = 0;
+        _currentCam = camera;
+        _currentCam.Priority = 10;
     }
 }
