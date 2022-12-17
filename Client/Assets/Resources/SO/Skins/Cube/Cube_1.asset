@@ -15,4 +15,4 @@ MonoBehaviour:
   _lock: 0
   _playerModeType: 1
   _sprite: {fileID: 0}
-  _modelTex: {fileID: 2800000, guid: 92ec2f76097a31a449f9ae0a3947865b, type: 3}
+  _modelTex: {fileID: 2800000, guid: 8c0dc16fd48a44b4b974031d671a9a9f, type: 3}

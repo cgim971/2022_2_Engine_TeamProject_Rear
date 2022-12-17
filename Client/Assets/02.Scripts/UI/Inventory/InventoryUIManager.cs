@@ -61,6 +61,18 @@ public class InventoryUIManager : MonoBehaviour
 
         if (_contentDictionary.TryGetValue(_playerModeType, out value))
             value?.SetActive(true);
+
+        SkinInfo skinInfo = null;
+        foreach (SkinInfo info in _skinList._skinInfoList)
+        {
+            if (info._playerModeType == _playerModeType)
+            {
+                skinInfo = info;
+                break;
+            }
+        }
+
+        _prevModel.SetModel(skinInfo);
     }
 
     public void SetMode(SkinSO skinSO)
@@ -76,6 +88,7 @@ public class InventoryUIManager : MonoBehaviour
         }
 
         skinInfo._currentModelTex = skinSO._modelTex;
+        GameManager.Instance.saveManager.SaveData();
         _prevModel.SetModel(skinInfo);
     }
 }

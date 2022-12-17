@@ -10,9 +10,19 @@ public class SkinListSO : ScriptableObject
 
     public void Init()
     {
-        foreach(SkinInfo skinInfo in _skinInfoList)
+        foreach (SkinInfo skinInfo in _skinInfoList)
         {
             skinInfo.Init();
+        }
+    }
+
+    public void InitTex(List<Texture> textureList)
+    {
+        int index = 0;
+
+        foreach (SkinInfo skinInfo in _skinInfoList)
+        {
+            skinInfo._currentModelTex = textureList[index++];
         }
     }
 
@@ -36,3 +46,4 @@ public class SkinInfo
         _modelMat.SetTexture("_MainTex", _currentModelTex);
     }
 }
+

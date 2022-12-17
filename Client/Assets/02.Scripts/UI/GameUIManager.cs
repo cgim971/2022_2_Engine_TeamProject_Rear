@@ -73,6 +73,7 @@ public class GameUIManager : MonoBehaviour
                 if (_processSlider.value > _stageSO._processSliderValue)
                 {
                     _stageSO._processSliderValue = _processSlider.value;
+                    GameManager.Instance.saveManager.SaveData();
                 }
 
                 if(_isDead == true)

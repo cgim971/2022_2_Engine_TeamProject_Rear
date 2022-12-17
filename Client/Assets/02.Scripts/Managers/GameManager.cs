@@ -6,6 +6,7 @@ public class GameManager : MonoSingleton<GameManager>
 {
     public UIManager uiManager { get; private set; }
     public SceneManager sceneManager { get; private set; }
+    public SaveManager saveManager { get; private set; }
     public int TryCount
     {
         get => _tryCount++;
@@ -27,6 +28,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         uiManager = this.GetComponent<UIManager>();
         sceneManager = this.GetComponent<SceneManager>();
+        saveManager = this.GetComponent<SaveManager>();
 
         FrameManager.SetFrame(_frame);
     }
