@@ -7,9 +7,27 @@ public class SaveManager : MonoBehaviour
 {
     [SerializeField] SkinListSO _skinList;
     [SerializeField] StageListSO _stageList;
+    public SkinListSO SkinList => _skinList;
+    public StageListSO StageList => _stageList;
 
     [SerializeField] SaveData _saveData;
+    public SaveData SaveDataInfo
+    {
+        get => _saveData;
+        set => _saveData = value;
+    }
 
+    public void SetProcessValue(List<float> processValues)
+    {
+        _saveData._processValues = processValues;
+        SaveData();
+    }
+
+    public void SetSkinValue(List<SkinValue> skinValues)
+    {
+        _saveData._skinValues = skinValues;
+        SaveData();
+    }
 
     private void Awake()
     {
@@ -68,7 +86,6 @@ public class SaveManager : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(_saveData, true);
         string path = Path.Combine(Application.persistentDataPath, "SaveData.json");
-        Debug.Log(path);
         File.WriteAllText(path, jsonData);
     }
 }

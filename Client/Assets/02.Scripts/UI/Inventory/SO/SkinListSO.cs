@@ -36,10 +36,24 @@ public class SkinListSO : ScriptableObject
             index++;
         }
     }
+    public Sprite GetSprite(int index) => _skinInfoList[index]._modelList[0]._sprite;
 
-    public Sprite GetSprite(int index)
+    public void Save()
     {
-        return _skinInfoList[index]._modelList[0]._sprite;
+        List<SkinValue> skinValues = new List<SkinValue>();
+        foreach (SkinInfo skinInfo in _skinInfoList)
+        {
+            List<bool> lockValues = new List<bool>();
+            SkinValue skinValue = new SkinValue();
+            skinValue._currentTextures = skinInfo._currentModelTex;
+            for (int i = 0; i < skinInfo._modelList.Count; i++)
+            {
+                lockValues.Add(skinInfo._modelList[i]._lock);
+            }
+            skinValue._lockList = lockValues;
+            skinValues.Add(skinValue);
+        }
+        GameManager.Instance.saveManager.SetSkinValue(skinValues);
     }
 }
 

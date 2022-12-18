@@ -40,7 +40,6 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void Stage(StageSO stageSO)
     {
-        Debug.Log("A");
         _currentStageSO = stageSO;
     }
 }

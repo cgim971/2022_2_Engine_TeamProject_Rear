@@ -4416,7 +4416,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368278489}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -6034,8 +6034,8 @@ MonoBehaviour:
   _skinList: {fileID: 11400000, guid: 54accaed5fafcf34db0b92d930c831ba, type: 2}
   _stageList: {fileID: 11400000, guid: 2ac15eb0a44f1d24a8fa4923baa9ad16, type: 2}
   _saveData:
+    _skinValues: []
     _processValues: []
-    _currentTextures: []
 --- !u!1 &1789340319
 GameObject:
   m_ObjectHideFlags: 0
