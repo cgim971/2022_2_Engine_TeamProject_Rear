@@ -5,8 +5,6 @@ using System.IO;
 
 public class SaveManager : MonoBehaviour
 {
-
-
     [SerializeField] SkinListSO _skinList;
     [SerializeField] StageListSO _stageList;
 
@@ -40,7 +38,7 @@ public class SaveManager : MonoBehaviour
         }
 
         _stageList.Init(_saveData._processValues);
-        _skinList.InitTex(_saveData._currentTextures);
+        _skinList.Init(_saveData._skinValues);
     }
 
     public void InitData()
@@ -52,10 +50,14 @@ public class SaveManager : MonoBehaviour
             _saveData._processValues.Add(0f);
         }
 
-        _saveData._currentTextures.Clear();
+        _saveData._skinValues.Clear();
         for (int i = 0; i < _skinList._skinInfoList.Count; i++)
         {
-            _saveData._currentTextures.Add(_skinList._skinInfoList[i]._modelList[0]._modelTex);
+            _saveData._skinValues.Add(new SkinValue
+            {
+                _currentTextures = _skinList._skinInfoList[i]._modelList[0]._modelTex,
+                _lockList = new List<bool> { true },
+            });
         }
 
         SaveData();
@@ -66,6 +68,7 @@ public class SaveManager : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(_saveData, true);
         string path = Path.Combine(Application.persistentDataPath, "SaveData.json");
+        Debug.Log(path);
         File.WriteAllText(path, jsonData);
     }
 }
@@ -73,6 +76,13 @@ public class SaveManager : MonoBehaviour
 [System.Serializable]
 public class SaveData
 {
+    public List<SkinValue> _skinValues;
     public List<float> _processValues;
-    public List<Texture> _currentTextures;
+}
+
+[System.Serializable]
+public class SkinValue
+{
+    public Texture _currentTextures;
+    public List<bool> _lockList;
 }

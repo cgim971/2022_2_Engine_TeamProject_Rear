@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e3ce2f6adba5cf45b102a3abbc37ef2, type: 3}
   m_Name: Ship_1
   m_EditorClassIdentifier: 
-  _lock: 0
+  _lock: 1
   _playerModeType: 2
   _sprite: {fileID: 0}
-  _tex: {fileID: 0}
+  _modelTex: {fileID: 0}

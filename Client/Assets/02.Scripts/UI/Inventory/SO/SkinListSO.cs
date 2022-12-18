@@ -16,13 +16,24 @@ public class SkinListSO : ScriptableObject
         }
     }
 
-    public void InitTex(List<Texture> textureList)
+    public void Init(List<SkinValue> skinValueList)
     {
         int index = 0;
 
         foreach (SkinInfo skinInfo in _skinInfoList)
         {
-            skinInfo._currentModelTex = textureList[index++];
+            skinInfo._currentModelTex = skinValueList[index]._currentTextures;
+            int count = 0;
+            foreach (SkinSO skin in skinInfo._modelList)
+            {
+                if (skinValueList[index]._lockList.Count <= count)
+                {
+                    skinValueList[index]._lockList.Add(true);
+                }
+                skin._lock = skinValueList[index]._lockList[count];
+                count++;
+            }
+            index++;
         }
     }
 
