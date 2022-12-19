@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skinInfoList:
   - _playerModeType: 1
-    _model: {fileID: 4266006418933853604, guid: 2f86f899cb798c8489635f8fc7147df0, type: 3}
+    _model: {fileID: 5759912283516197317, guid: 2f86f899cb798c8489635f8fc7147df0, type: 3}
     _modelMat: {fileID: 2100000, guid: 6efaf33960c72bb40835af7214122008, type: 2}
     _currentModelTex: {fileID: 0}
     _modelList:
@@ -74,7 +74,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: cf1611a2410eeeb40903c69eac78abf2, type: 2}
     - {fileID: 11400000, guid: c0e1e8435ced5fb4db726a97c54eb073, type: 2}
   - _playerModeType: 7
-    _model: {fileID: 7471135227852298560, guid: b4eba52ef3da9824cb51a4bde44e18a7, type: 3}
+    _model: {fileID: 7583951357936092873, guid: b4eba52ef3da9824cb51a4bde44e18a7, type: 3}
     _modelMat: {fileID: 2100000, guid: 75d63971284f7f043934d8bb9d137a6b, type: 2}
     _currentModelTex: {fileID: 0}
     _modelList:
