@@ -63,6 +63,7 @@ public class SoundManager
         audioSource.clip = clip;
 
         _bgmAudioSource = audioSource;
+        _bgmAudioSource.loop = true;
         SetBgmVolume();
 
         _bgmAudioSource.Play();

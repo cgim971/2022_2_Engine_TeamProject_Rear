@@ -35,7 +35,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        SoundManager.PlayBGM("Wanna by Ikson");
+        SoundManager.PlayBGM("Wanna");
     }
 
     public void Stage(StageSO stageSO)

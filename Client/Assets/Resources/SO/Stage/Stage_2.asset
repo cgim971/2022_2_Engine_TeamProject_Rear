@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc1b3979b2cf64408a866affa20b8fa, type: 3}
+  m_Name: Stage_2
+  m_EditorClassIdentifier: 
+  _stageIndex: 1
+  _stageTitle: Wait For Love
+  _stageSprite: {fileID: 0}
+  _stageProducer: "\uC131\uD604"
+  _stageAudioClip: {fileID: 8300000, guid: 721e7e7cf3759964e91ca31a0b2e6f72, type: 3}
+  _stageMode: 1
+  _isMain: 0
+  _isComming: 0
+  _processSliderValue: 0
+  _processSliderMaxValue: 0
+  _isClear: 0
