@@ -48,7 +48,8 @@ public class InventoryUIManager : MonoBehaviour
             newContent.SetActive(false);
         }
 
-        _contentDictionary[PlayerModeType.CUBE].SetActive(true);
+        _playerModeType = PlayerModeType.CUBE;
+        _contentDictionary[_playerModeType].SetActive(true);
     }
 
     // ¹ØÀÇ ¹öÆ° ´­·¶À» ¶§
