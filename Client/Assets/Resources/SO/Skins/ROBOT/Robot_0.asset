@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lock: 1
   _playerModeType: 5
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: ca26fa74960ef4142b59efda7dd0fa7e, type: 3}
   _modelTex: {fileID: 0}

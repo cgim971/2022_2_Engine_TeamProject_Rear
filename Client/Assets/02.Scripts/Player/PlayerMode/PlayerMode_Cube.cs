@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerMode_Cube : PlayerMode_Base
 {
@@ -9,10 +10,9 @@ public class PlayerMode_Cube : PlayerMode_Base
         base.FixedUpdate();
         CheckObstacle();
     }
-
+    int index = 1;
     public override void Animation()
     {
-
     }
 
     public override bool CanJump()

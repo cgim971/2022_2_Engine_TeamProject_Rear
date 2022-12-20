@@ -99,7 +99,6 @@ public class GameUIManager : MonoBehaviour
             _pauseCanvsGroup.GetComponent<PauseUIManager>().SetProcess();
             Time.timeScale = 0;
             SoundManager.BgmPause();
-
         });
         seq.Append(_fadeImage.DOFade(1, _delay));
         seq.AppendCallback(() =>

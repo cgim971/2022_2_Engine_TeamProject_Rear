@@ -14,13 +14,15 @@ public class ClearUIManager : MonoBehaviour
     {
         _titleText.text = $"{GameManager.Instance.CurrentStageSO._stageTitle} Complete!";
         _attemptText.text = $"Attempts : {GameManager.Instance.TryCount - 1}";
-        _timeText.text = $"Time : ";
+        _timeText.text = $"Time : {GameManager.Instance.Timer.ToString("F2")}";
+        GameManager.Instance.TimerStop();
     }
 
     public void Retry()
     {
         GameManager.Instance.uiManager.InitCanvasGroup(GameManager.Instance.uiManager.FadeImage);
         GameManager.Instance.sceneManager.StageScene(GameManager.Instance.CurrentStageSO);
+        GameManager.Instance.TimerStart();
     }
 
 }
