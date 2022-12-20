@@ -67,7 +67,6 @@ public class GameManager : MonoSingleton<GameManager>
         while (true)
         {
             _timer += Time.deltaTime;
-            Debug.Log(_timer);
             yield return null;
         }
     }
