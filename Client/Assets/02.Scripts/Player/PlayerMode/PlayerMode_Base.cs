@@ -87,7 +87,6 @@ public abstract class PlayerMode_Base : MonoBehaviour
         {
             return true;
         }
-
         return false;
     }
 

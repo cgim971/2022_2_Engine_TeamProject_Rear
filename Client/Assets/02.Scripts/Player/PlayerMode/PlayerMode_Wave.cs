@@ -10,7 +10,6 @@ public class PlayerMode_Wave : PlayerMode_Base
 
     // ground와 닿으면 일직선 코드 필요
 
-
     public override void UseInit()
     {
         base.UseInit();

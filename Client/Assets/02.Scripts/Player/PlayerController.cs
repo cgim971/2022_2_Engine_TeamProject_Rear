@@ -150,7 +150,6 @@ public class PlayerController : MonoBehaviour
     {
         _dirType = dirType;
         _dir = GetDirection(dirType);
-
         RotateObj();
     }
     public void ReverseDir()
@@ -200,9 +199,6 @@ public class PlayerController : MonoBehaviour
     // 중력과 방향을 이용하여 바라보는 오브젝트를 회전
     public void RotateObj()
     {
-        _dir = GetDirection(_dirType);
-        _gravity = _customGravity.SetGravity(_gravityType);
-
         Quaternion rotate = Quaternion.identity;
 
         if (_gravityType == DirType.DOWN)
@@ -319,7 +315,6 @@ public class PlayerController : MonoBehaviour
                 rotate = Quaternion.Euler(new Vector3(360, -270, 90));
             }
         }
-
         _rotateTs.DORotateQuaternion(rotate, 0.2f);
     }
 }
