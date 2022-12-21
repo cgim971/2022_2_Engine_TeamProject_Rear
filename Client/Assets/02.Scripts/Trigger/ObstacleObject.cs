@@ -8,7 +8,6 @@ public class ObstacleObject : MonoBehaviour
     private PlayerController _playerController;
     protected Collider _collider;
 
-
     private void Awake() => Init();
     void Init()
     {

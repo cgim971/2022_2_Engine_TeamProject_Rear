@@ -54,7 +54,13 @@ public class StageInfo : MonoBehaviour
         }
 
         _titleText.text = $"{_stageSO._stageTitle}";
-        _titleImage.sprite = _stageSO._stageSprite;
+        if (_stageSO._stageSprite != null)
+        {
+            _titleImage.gameObject.SetActive(true);
+            _titleImage.sprite = _stageSO._stageSprite;
+        }
+        else
+            _titleImage.gameObject.SetActive(false);
 
         _producerText.text = $"Made By {_stageSO._stageProducer}";
 
