@@ -15,12 +15,16 @@ public class GameManager : MonoSingleton<GameManager>
 
     public StageListSO StageListSO => _stageList;
     public StageSO CurrentStageSO => _currentStageSO;
-    // To do : 풀링 매니저도 넣을 예정
+    public float Timer => _timer;
+
 
     [SerializeField] private float _frame = 30f;
     private int _tryCount = 1;
     [SerializeField] private StageListSO _stageList;
     [SerializeField] private StageSO _currentStageSO;
+
+    [SerializeField] private float _timer = 0;
+    [SerializeField] private int _isTimer = 3;
 
     private void Awake() => Init();
 
@@ -33,13 +37,37 @@ public class GameManager : MonoSingleton<GameManager>
         FrameManager.SetFrame(_frame);
     }
 
-    private void Start()
-    {
-        SoundManager.PlayBGM("Wanna");
-    }
+    private void Start() => SoundManager.PlayBGM("Wanna");
 
     public void Stage(StageSO stageSO)
     {
         _currentStageSO = stageSO;
+        TimerStart();
+    }
+
+    Coroutine _timerCoroutine;
+    public void TimerStart()
+    {
+        if (_timerCoroutine != null)
+            StopCoroutine(_timerCoroutine);
+
+        _timerCoroutine = StartCoroutine(Timers());
+    }
+    public void TimerStop()
+    {
+        if (_timerCoroutine != null)
+            StopCoroutine(_timerCoroutine);
+    }
+
+    public IEnumerator Timers()
+    {
+        _timer = 0f;
+        yield return null;
+
+        while (true)
+        {
+            _timer += Time.deltaTime;
+            yield return null;
+        }
     }
 }

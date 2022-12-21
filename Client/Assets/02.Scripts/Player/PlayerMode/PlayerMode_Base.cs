@@ -14,6 +14,7 @@ public abstract class PlayerMode_Base : MonoBehaviour
     protected Rigidbody _rigidbody = null;
 
     protected Transform _playerTs;
+    protected Transform _modelTs;
 
     [SerializeField] protected float _speed;
     [SerializeField] protected float _jumpPower;
@@ -22,12 +23,11 @@ public abstract class PlayerMode_Base : MonoBehaviour
     protected bool _isExtraJump = false;
     protected bool _isGravity = false;
 
-
-
     public void Init()
     {
         _playerController = FindObjectOfType<PlayerController>();
         _playerTs = _playerController.transform;
+        _modelTs = this.transform.GetChild(0);
 
         _customGravity = _playerController.CustomGravity;
         _speedManager = _playerController.SpeedManager;

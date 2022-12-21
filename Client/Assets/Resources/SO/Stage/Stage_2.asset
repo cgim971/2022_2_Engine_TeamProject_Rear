@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc1b3979b2cf64408a866affa20b8fa, type: 3}
   m_Name: Stage_2
   m_EditorClassIdentifier: 
-  _stageIndex: 1
+  _stageIndex: 2
   _stageTitle: Wait For Love
   _stageSprite: {fileID: 0}
   _stageProducer: "\uC131\uD604"
