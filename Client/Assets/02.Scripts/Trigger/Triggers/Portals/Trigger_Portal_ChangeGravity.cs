@@ -11,5 +11,4 @@ public class Trigger_Portal_ChangeGravity : Trigger_Portal_Base
         _playerController.SetGravity(_gravityType);
     }
     public override void OffTrigger() { }
-
 }

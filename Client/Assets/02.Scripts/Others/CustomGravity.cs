@@ -10,7 +10,6 @@ public class CustomGravity : MonoBehaviour
     public bool IsGravity => _isGravity;
     #endregion
 
-
     private Rigidbody _rigidbody;
 
     [SerializeField] private float _gravityScale = 4.0f;
@@ -36,10 +35,6 @@ public class CustomGravity : MonoBehaviour
         _rigidbody.AddForce(gravity, ForceMode.Acceleration);
     }
 
-    /// <summary>
-    /// Set Gravity DirType
-    /// </summary>
-    /// <param name="gravityType"></param>
     public Vector3 SetGravity(DirType gravityType)
     {
         _gravityDir = GetGravity(gravityType);

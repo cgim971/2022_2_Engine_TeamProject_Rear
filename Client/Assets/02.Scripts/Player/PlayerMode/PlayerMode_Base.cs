@@ -37,20 +37,12 @@ public abstract class PlayerMode_Base : MonoBehaviour
         _groundLayerMask = LayerMask.GetMask("Ground");
     }
 
-    /// <summary>
-    /// 사용 될 때마다 초기 셋팅
-    /// </summary>
     public virtual void UseInit()
     {
         StartCoroutine(InputTouch());
         _customGravity.SetGravity(true);
     }
 
-
-    /// <summary>
-    /// TouchCheck
-    /// </summary>
-    /// <returns></returns>
     public virtual IEnumerator InputTouch()
     {
         while (true)
@@ -60,25 +52,18 @@ public abstract class PlayerMode_Base : MonoBehaviour
             {
                 yield return new WaitUntil(() => _playerController.Touch == TouchState.UP || CheckGround());
             }
-
             yield return new WaitForFixedUpdate();
         }
     }
 
     public void SetIsExtraJump(bool isExtraJump) => _isExtraJump = isExtraJump;
 
-    // 플레이어 필수 기능
-    // 점프, 이동, 
-
     public virtual void FixedUpdate()
     {
         Move();
         CheckObstacleDir();
     }
-    /// <summary>
-    /// 그라운드와 닿았는지 체크
-    /// </summary>
-    /// <returns></returns>
+
     public bool CheckGround()
     {
         float distance = (VectorAbs(_playerController.Gravity) * _sizeManager.Size.x).magnitude / 2 + 0.1f;
@@ -90,9 +75,6 @@ public abstract class PlayerMode_Base : MonoBehaviour
         return false;
     }
 
-    /// <summary>
-    /// 앞에 오브젝트가 있다면
-    /// </summary>
     public void CheckObstacleDir()
     {
         float distance = (VectorAbs(_playerController.Dir) * _sizeManager.Size.x).magnitude / 2 + 0.1f;
@@ -104,9 +86,6 @@ public abstract class PlayerMode_Base : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 중력의 반대방향과 닿으면
-    /// </summary>
     public void CheckObstacle()
     {
         if (_isGravity) return;
@@ -119,26 +98,11 @@ public abstract class PlayerMode_Base : MonoBehaviour
         }
     }
 
-    public void SetIsGravity(bool isGravity = false)
-    {
-        _isGravity = isGravity;
-    }
+    public void SetIsGravity(bool isGravity = false) => _isGravity = isGravity;
 
-    public virtual void Move()
-    {
-        _rigidbody.MovePosition(_playerTs.position + _playerController.Dir * _speed * _speedManager.Speed * Time.deltaTime);
-    }
+    public virtual void Move() => _rigidbody.MovePosition(_playerTs.position + _playerController.Dir * _speed * _speedManager.Speed * Time.deltaTime);
 
-    /// <summary>
-    /// 점프 함수 
-    /// </summary>
     public abstract void Jump();
-    /// <summary>
-    /// 점프 가능한지 체크 함수 
-    /// </summary>
     public abstract bool CanJump();
-    /// <summary>
-    /// 애니메이션
-    /// </summary>
     public abstract void Animation();
 }
