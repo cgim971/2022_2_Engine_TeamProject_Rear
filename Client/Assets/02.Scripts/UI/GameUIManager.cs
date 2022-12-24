@@ -83,7 +83,6 @@ public class GameUIManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Clear");
                 yield break;
             }
         }

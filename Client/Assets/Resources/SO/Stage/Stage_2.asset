@@ -20,6 +20,6 @@ MonoBehaviour:
   _stageMode: 1
   _isMain: 0
   _isComming: 0
-  _processSliderValue: 30
+  _processSliderValue: 22
   _processSliderMaxValue: 22
   _isClear: 0

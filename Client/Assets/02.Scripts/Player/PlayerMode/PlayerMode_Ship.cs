@@ -38,7 +38,4 @@ public class PlayerMode_Ship : PlayerMode_Base
     public override void Animation() { }
 
     public override bool CanJump() => true;
-
-
-
 }

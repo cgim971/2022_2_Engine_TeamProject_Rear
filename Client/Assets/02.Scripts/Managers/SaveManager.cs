@@ -29,10 +29,7 @@ public class SaveManager : MonoBehaviour
         SaveData();
     }
 
-    private void Awake()
-    {
-        LoadData();
-    }
+    private void Awake() => LoadData();
 
     void LoadData()
     {
@@ -86,7 +83,6 @@ public class SaveManager : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(_saveData, true);
         string path = Path.Combine(Application.persistentDataPath, "SaveData.json");
-        Debug.Log(path);
         File.WriteAllText(path, jsonData);
     }
 }

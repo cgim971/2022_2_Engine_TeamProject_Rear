@@ -13,5 +13,4 @@ public class Trigger_JumpRing : Trigger_Base
     {
         _playerController.ExtraJump(false);
     }
-
 }

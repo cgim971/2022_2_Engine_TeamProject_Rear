@@ -15,7 +15,7 @@ MonoBehaviour:
   _stageIndex: 0
   _stageTitle: BloN
   _stageSprite: {fileID: 21300000, guid: a6e7f9dd6831bc842b151f9953783e76, type: 3}
-  _stageProducer: "\uC6B0\uB9C8\uC774"
+  _stageProducer: BFS
   _stageAudioClip: {fileID: 0}
   _stageMode: 0
   _isMain: 1
